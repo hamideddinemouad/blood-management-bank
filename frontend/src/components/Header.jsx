@@ -110,7 +110,7 @@ export default function Header({ currentUser }) {
       window.removeEventListener("focus", handleAuthChange);
       window.removeEventListener(AUTH_CHANGE_EVENT, handleAuthChange);
     };
-  }, [currentUser, location.pathname]);
+  }, [currentUser]);
 
   // Handle scroll effect
   useEffect(() => {
