@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import { CheckCircle, XCircle, Clock, MapPin, Phone } from "lucide-react";
+
+const API_URL = buildApiUrl("/api/blood-lab");
 
 const LabManageRequests = () => {
   const [requests, setRequests] = useState([]);
@@ -11,7 +14,7 @@ const LabManageRequests = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      const res = await axios.get("/api/blood-lab/blood/requests", {
+      const res = await axios.get(`${API_URL}/blood/requests`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRequests(res.data.requests || []);
@@ -32,7 +35,7 @@ const LabManageRequests = () => {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `/api/blood-lab/blood/requests/${id}`,
+        `${API_URL}/blood/requests/${id}`,
         { action },
         { headers: { Authorization: `Bearer ${token}` } }
       );

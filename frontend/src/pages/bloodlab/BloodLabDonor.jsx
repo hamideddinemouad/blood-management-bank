@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import { 
   Search, 
   User, 
@@ -14,6 +15,8 @@ import {
   Filter,
   Plus
 } from "lucide-react";
+
+const API_URL = buildApiUrl("/api/blood-lab");
 
 const BloodLabDonor = () => {
   const [term, setTerm] = useState("");
@@ -44,7 +47,7 @@ const BloodLabDonor = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get(
-        `/api/blood-lab/donors/search?term=${term}`,
+        `${API_URL}/donors/search?term=${encodeURIComponent(term)}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -65,7 +68,7 @@ const BloodLabDonor = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get(
-        "/api/blood-lab/donations/recent",
+        `${API_URL}/donations/recent`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setRecentDonations(res.data.donations || []);
@@ -97,7 +100,7 @@ const BloodLabDonor = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        `/api/blood-lab/donors/donate/${selectedDonor._id}`,
+        `${API_URL}/donors/donate/${selectedDonor._id}`,
         donationData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

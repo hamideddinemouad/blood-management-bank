@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import {
   Loader2,
   Save,
@@ -25,8 +26,7 @@ import {
   sanitizeMoroccanPhoneInput,
 } from "../../utils/moroccanPhone";
 
-// NOTE: Using localStorage and hardcoded URL for API connection as per previous context.
-const API_BASE_URL = "/api";
+const API_URL = buildApiUrl("/api/facility");
 
 // Define a default structured object for operating hours
 const defaultOperatingHours = {
@@ -112,7 +112,7 @@ const LabProfile = () => {
       setLoading(true);
       const token = localStorage.getItem("token");
 
-      const { data } = await axios.get(`${API_BASE_URL}/facility/profile`, {
+      const { data } = await axios.get(`${API_URL}/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -217,7 +217,7 @@ const LabProfile = () => {
       const token = localStorage.getItem("token");
 
       const { data } = await axios.put(
-        `${API_BASE_URL}/facility/profile`,
+        `${API_URL}/profile`,
         payload,
         {
           headers: {

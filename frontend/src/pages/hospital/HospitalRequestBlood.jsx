@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import { Droplet, MapPin, Phone, Clock, Send } from "lucide-react";
 
 const HospitalRequestBlood = () => {
@@ -20,7 +21,7 @@ const HospitalRequestBlood = () => {
       try {
         setLabsLoading(true);
         const token = localStorage.getItem("token");
-        const res = await axios.get("/api/facility/labs", {
+        const res = await axios.get(buildApiUrl("/api/facility/labs"), {
           headers: { Authorization: `Bearer ${token}` },
         });
         setLabs(res.data.labs || []);
@@ -43,7 +44,7 @@ const HospitalRequestBlood = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "/api/hospital/blood/request",
+        buildApiUrl("/api/hospital/blood/request"),
         form,
         { headers: { Authorization: `Bearer ${token}` } }
       );

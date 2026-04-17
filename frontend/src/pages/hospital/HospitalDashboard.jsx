@@ -59,12 +59,12 @@ const HospitalDashboard = () => {
         }
 
         // Fetch blood stock
-        const stockRes = await axios.get("/api/hospital/blood/stock", {
+        const stockRes = await axios.get(buildApiUrl("/api/hospital/blood/stock"), {
           headers: { Authorization: `Bearer ${token}` },
         });
 
         // Fetch blood requests
-        const requestsRes = await axios.get("/api/hospital/blood/requests", {
+        const requestsRes = await axios.get(buildApiUrl("/api/hospital/blood/requests"), {
           headers: { Authorization: `Bearer ${token}` },
         });
 

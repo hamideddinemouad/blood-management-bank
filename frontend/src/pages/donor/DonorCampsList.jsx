@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import {
   MapPin,
   Calendar,
@@ -19,8 +20,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-// NOTE: Ensure this URL matches your running backend API endpoint
-const API_BASE_URL = "/api";
+const API_URL = buildApiUrl("/api/donor");
 
 const STATUS_OPTIONS = [
   { value: "all", label: "All Camps" },
@@ -233,7 +233,7 @@ export const DonorCampsList = () => {
         ...(searchTerm && { q: searchTerm }),
       }).toString();
       
-      const apiUrl = `${API_BASE_URL}/donor/camps?${params}`;
+      const apiUrl = `${API_URL}/camps?${params}`;
       console.log("Fetching camps from URL:", apiUrl);
 
       const response = await axios.get(apiUrl, {
@@ -306,7 +306,7 @@ export const DonorCampsList = () => {
       const method = camp.isRegistered ? "delete" : "post";
       const response = await axios({
         method,
-        url: `${API_BASE_URL}/donor/camps/${camp._id}/register`,
+        url: `${API_URL}/camps/${camp._id}/register`,
         headers: {
           Authorization: `Bearer ${token}`,
         },

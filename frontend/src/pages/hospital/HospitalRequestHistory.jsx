@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import { CheckCircle, XCircle, Clock, MapPin, Calendar } from "lucide-react";
 
 const HospitalRequestHistory = () => {
@@ -12,7 +13,7 @@ const HospitalRequestHistory = () => {
       try {
         setLoading(true);
         const token = localStorage.getItem("token");
-        const res = await axios.get("/api/hospital/blood/requests", {
+        const res = await axios.get(buildApiUrl("/api/hospital/blood/requests"), {
           headers: { Authorization: `Bearer ${token}` },
         });
 
