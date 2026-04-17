@@ -29,5 +29,17 @@ export default defineConfig({
     setupFiles: './src/test/setup.js',
     css: true,
     clearMocks: true,
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      reportsDirectory: './coverage',
+      exclude: [
+        'dist/**',
+        'coverage/**',
+        'src/main.jsx',
+        'src/**/*.test.{js,jsx}',
+        'src/test/**',
+      ],
+    },
   },
 })
