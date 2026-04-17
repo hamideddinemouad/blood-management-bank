@@ -1,6 +1,10 @@
 import express from "express";
 import cors from "cors";
-import { isAllowedCorsOrigin, isSwaggerEnabled } from "./config/env.js";
+import {
+  getMaskedEnvDebugSnapshot,
+  isAllowedCorsOrigin,
+  isSwaggerEnabled,
+} from "./config/env.js";
 import authRoutes from "./routes/authRoutes.js";
 import donorRoutes from "./routes/donorRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
@@ -14,6 +18,14 @@ export const createApp = () => {
   const app = express();
   app.disable("x-powered-by");
   app.use(applySecurityHeaders);
+  app.use((req, _res, next) => {
+    console.log("Backend request env debug:", {
+      method: req.method,
+      path: req.originalUrl,
+      env: getMaskedEnvDebugSnapshot(),
+    });
+    next();
+  });
   app.use(express.json({
     limit: "100kb"
   }));
