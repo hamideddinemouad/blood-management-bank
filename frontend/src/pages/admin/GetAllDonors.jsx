@@ -21,76 +21,83 @@ import {
   Power,
   PowerOff,
 } from "lucide-react";
+import MobileShieldLoader from "../../components/MobileShieldLoader";
 
 const API_URL = buildApiUrl("/api/admin");
 
 const DonorPageSkeleton = () => (
-  <div className="min-h-screen bg-gradient-to-br from-red-50 to-white p-4 sm:p-6 page-enter">
-    <div className="max-w-7xl mx-auto space-y-6">
-      <div className="rounded-3xl border border-red-100 bg-white p-6 shadow-sm">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex items-center gap-4">
-            <div className="skeleton-block h-12 w-12 rounded-2xl" />
-            <div className="space-y-2">
-              <div className="skeleton-block h-7 w-52 rounded-lg" />
-              <div className="skeleton-block h-4 w-80 max-w-full rounded-lg" />
+  <>
+    <MobileShieldLoader
+      title="Loading Donor Directory"
+      message="Preparing donor records for review..."
+    />
+    <div className="hidden sm:block min-h-screen bg-gradient-to-br from-red-50 to-white p-4 sm:p-6 page-enter">
+      <div className="max-w-7xl mx-auto space-y-6">
+        <div className="rounded-3xl border border-red-100 bg-white p-6 shadow-sm">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="skeleton-block h-12 w-12 rounded-2xl" />
+              <div className="space-y-2">
+                <div className="skeleton-block h-7 w-52 rounded-lg" />
+                <div className="skeleton-block h-4 w-80 max-w-full rounded-lg" />
+              </div>
             </div>
+            <div className="skeleton-block h-11 w-36 rounded-xl" />
           </div>
-          <div className="skeleton-block h-11 w-36 rounded-xl" />
+          <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-5">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <div key={index} className="rounded-2xl border border-red-100 p-4">
+                <div className="skeleton-block mx-auto h-8 w-14 rounded-lg" />
+                <div className="skeleton-block mx-auto mt-3 h-4 w-20 rounded-lg" />
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-5">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <div key={index} className="rounded-2xl border border-red-100 p-4">
-              <div className="skeleton-block mx-auto h-8 w-14 rounded-lg" />
-              <div className="skeleton-block mx-auto mt-3 h-4 w-20 rounded-lg" />
+
+        <div className="rounded-3xl border border-red-100 bg-white p-6 shadow-sm">
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_180px_180px_180px_56px]">
+            <div className="skeleton-block h-11 rounded-xl" />
+            <div className="skeleton-block h-11 rounded-xl" />
+            <div className="skeleton-block h-11 rounded-xl" />
+            <div className="skeleton-block h-11 rounded-xl" />
+            <div className="skeleton-block h-11 rounded-xl" />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div
+              key={index}
+              className="rounded-3xl border border-red-100 bg-white p-6 shadow-sm"
+            >
+              <div className="flex items-start justify-between gap-4 border-b border-gray-100 pb-4">
+                <div className="min-w-0 flex-1 space-y-2">
+                  <div className="skeleton-block h-5 w-32 rounded-lg" />
+                  <div className="skeleton-block h-4 w-40 max-w-full rounded-lg" />
+                </div>
+                <div className="space-y-2">
+                  <div className="skeleton-block h-6 w-24 rounded-full" />
+                  <div className="skeleton-block h-6 w-14 rounded-full" />
+                </div>
+              </div>
+              <div className="space-y-3 pt-4">
+                {Array.from({ length: 5 }).map((__, rowIndex) => (
+                  <div key={rowIndex} className="flex items-center gap-3">
+                    <div className="skeleton-block h-4 w-4 rounded-full" />
+                    <div className="skeleton-block h-4 flex-1 rounded-lg" />
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 grid gap-2 border-t border-gray-100 pt-4">
+                <div className="skeleton-block h-10 rounded-xl" />
+                <div className="skeleton-block h-10 rounded-xl" />
+              </div>
             </div>
           ))}
         </div>
       </div>
-
-      <div className="rounded-3xl border border-red-100 bg-white p-6 shadow-sm">
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_180px_180px_180px_56px]">
-          <div className="skeleton-block h-11 rounded-xl" />
-          <div className="skeleton-block h-11 rounded-xl" />
-          <div className="skeleton-block h-11 rounded-xl" />
-          <div className="skeleton-block h-11 rounded-xl" />
-          <div className="skeleton-block h-11 rounded-xl" />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <div
-            key={index}
-            className="rounded-3xl border border-red-100 bg-white p-6 shadow-sm"
-          >
-            <div className="flex items-start justify-between gap-4 border-b border-gray-100 pb-4">
-              <div className="min-w-0 flex-1 space-y-2">
-                <div className="skeleton-block h-5 w-32 rounded-lg" />
-                <div className="skeleton-block h-4 w-40 max-w-full rounded-lg" />
-              </div>
-              <div className="space-y-2">
-                <div className="skeleton-block h-6 w-24 rounded-full" />
-                <div className="skeleton-block h-6 w-14 rounded-full" />
-              </div>
-            </div>
-            <div className="space-y-3 pt-4">
-              {Array.from({ length: 5 }).map((__, rowIndex) => (
-                <div key={rowIndex} className="flex items-center gap-3">
-                  <div className="skeleton-block h-4 w-4 rounded-full" />
-                  <div className="skeleton-block h-4 flex-1 rounded-lg" />
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 grid gap-2 border-t border-gray-100 pt-4">
-              <div className="skeleton-block h-10 rounded-xl" />
-              <div className="skeleton-block h-10 rounded-xl" />
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
-  </div>
+  </>
 );
 
 function GetAllDonors() {

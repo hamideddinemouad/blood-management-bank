@@ -22,6 +22,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { toast } from "react-hot-toast";
+import MobileShieldLoader from "../../components/MobileShieldLoader";
 
 const API_URL = buildApiUrl("/api/blood-lab");
 
@@ -170,17 +171,23 @@ const BloodLabDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-pulse mb-4">
-            <Beaker className="w-12 h-12 text-red-500 mx-auto" />
+      <>
+        <MobileShieldLoader
+          title="Loading Blood Lab Dashboard"
+          message="Preparing your medical insights..."
+        />
+        <div className="hidden sm:flex min-h-screen bg-gradient-to-br from-red-50 to-white items-center justify-center">
+          <div className="text-center">
+            <div className="animate-pulse mb-4">
+              <Beaker className="w-12 h-12 text-red-500 mx-auto" />
+            </div>
+            <h2 className="text-xl font-semibold text-gray-700 mb-2">
+              Loading Blood Lab Dashboard
+            </h2>
+            <p className="text-gray-500">Preparing your medical insights...</p>
           </div>
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            Loading Blood Lab Dashboard
-          </h2>
-          <p className="text-gray-500">Preparing your medical insights...</p>
         </div>
-      </div>
+      </>
     );
   }
 
