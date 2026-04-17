@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import {
   Droplet,
   RefreshCw,
@@ -10,7 +11,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-const API_URL = `${import.meta.env.VITE_API_URL || ""}/api/admin`;
+const API_URL = buildApiUrl("/api/admin");
 
 function AdminDonations() {
   const [donations, setDonations] = useState([]);

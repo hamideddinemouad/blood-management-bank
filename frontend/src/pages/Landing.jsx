@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { buildApiUrl } from "../config/app";
 import {
   Heart,
   Users,
@@ -40,7 +41,7 @@ const LandingPage = () => {
     const fetchLandingStats = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL || ""}/api/public/landing-stats`,
+          buildApiUrl("/api/public/landing-stats"),
         );
         const data = await response.json();
 

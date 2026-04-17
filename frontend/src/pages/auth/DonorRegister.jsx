@@ -2,6 +2,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { buildApiUrl } from "../../config/app";
 import DemoAccessPanel from "../../components/DemoAccessPanel";
 import {
   isValidMoroccanPhone,
@@ -296,7 +297,7 @@ export default function DonorRegisterForm() {
       role: "donor",
     };
 
-    const API_URL = `${import.meta.env.VITE_API_URL || ""}/api/auth/register`;
+    const API_URL = buildApiUrl("/api/auth/register");
 
     console.log("Submitting Donor Data:", submissionPayload);
 

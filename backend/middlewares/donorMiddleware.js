@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { getJwtSecret } from "../config/env.js";
 import Donor from "../models/donorModel.js";
 import { getTokenFromRequest } from "../utils/authCookie.js";
 export const protectDonor = async (req, res, next) => {
@@ -10,7 +11,7 @@ export const protectDonor = async (req, res, next) => {
     return;
   }
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, getJwtSecret());
     req.donor = await Donor.findById(decoded.id).select("-password");
     if (!req.donor) return res.status(401).json({
       message: "Unauthorized"

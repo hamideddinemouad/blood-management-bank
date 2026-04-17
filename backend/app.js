@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { getCorsOrigins, isSwaggerEnabled } from "./config/env.js";
 import authRoutes from "./routes/authRoutes.js";
 import donorRoutes from "./routes/donorRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
@@ -18,7 +19,7 @@ export const createApp = () => {
   }));
   app.use(cors({
     origin: (origin, callback) => {
-      const allowedOrigins = (process.env.CORS_ORIGINS || "http://localhost,http://localhost:5173,http://localhost:5174").split(",").map(item => item.trim()).filter(Boolean);
+      const allowedOrigins = getCorsOrigins();
       if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
@@ -26,7 +27,7 @@ export const createApp = () => {
     },
     credentials: true
   }));
-  if (process.env.NODE_ENV !== "production" || process.env.ENABLE_SWAGGER === "true") {
+  if (isSwaggerEnabled()) {
     app.get("/api/doc.json", (_req, res) => {
       res.json(swaggerSpec);
     });

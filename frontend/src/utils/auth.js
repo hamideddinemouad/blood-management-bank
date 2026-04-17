@@ -1,4 +1,5 @@
 import { toast } from "react-hot-toast";
+import { buildApiUrl } from "../config/app";
 
 const AUTH_CHANGE_EVENT = "bbms-auth-changed";
 const AUTH_SNAPSHOT_KEY = "bbms-auth-snapshot";
@@ -101,7 +102,7 @@ export const isTokenValid = () => {
 };
 
 export const fetchCurrentUser = async () => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL || ""}/api/auth/profile`, {
+  const response = await fetch(buildApiUrl("/api/auth/profile"), {
     credentials: "include",
   });
 

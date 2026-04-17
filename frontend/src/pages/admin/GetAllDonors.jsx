@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import {
   User,
   Heart,
@@ -21,7 +22,7 @@ import {
   PowerOff,
 } from "lucide-react";
 
-const API_URL = `${import.meta.env.VITE_API_URL || ""}/api/admin`;
+const API_URL = buildApiUrl("/api/admin");
 
 const DonorPageSkeleton = () => (
   <div className="min-h-screen bg-gradient-to-br from-red-50 to-white p-4 sm:p-6 page-enter">

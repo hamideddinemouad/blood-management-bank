@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import {
   Building,
   MapPin,
@@ -25,7 +26,7 @@ const FacilityApproval = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const token = localStorage.getItem("token");
-  const API_URL = `${import.meta.env.VITE_API_URL || ""}/api/admin`;
+  const API_URL = buildApiUrl("/api/admin");
 
   // Fetch pending facilities
   const fetchPendingFacilities = async (showToast = false) => {

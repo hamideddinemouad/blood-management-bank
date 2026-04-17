@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { getJwtSecret } from "../config/env.js";
 import Facility from "../models/facilityModel.js";
 import { getTokenFromRequest } from "../utils/authCookie.js";
 export const protectFacility = async (req, res, next) => {
@@ -9,7 +10,7 @@ export const protectFacility = async (req, res, next) => {
         message: "Not authorized, no token"
       });
     }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, getJwtSecret());
     const facility = await Facility.findById(decoded.id).select("-password");
     if (!facility) {
       return res.status(404).json({

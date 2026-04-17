@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import {
   Calendar,
   RefreshCw,
@@ -10,7 +11,7 @@ import {
   Clock,
 } from "lucide-react";
 
-const API_URL = `${import.meta.env.VITE_API_URL || ""}/api/admin`;
+const API_URL = buildApiUrl("/api/admin");
 
 function AdminCamps() {
   const [camps, setCamps] = useState([]);
