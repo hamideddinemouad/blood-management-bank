@@ -161,6 +161,14 @@ VITE_API_URL=https://your-backend-project.vercel.app
 
 For SPA deep links on Vercel, this repo includes `frontend/vercel.json`.
 
+The frontend build now fails fast if:
+
+- `VITE_API_URL` is missing
+- `VITE_API_URL` is not a valid absolute `http` or `https` URL
+- `VITE_API_URL` includes a path, query string, or hash
+- `VITE_API_URL` points at a Vercel frontend domain instead of the API project
+- `VITE_WEBSITE_NAME` is missing
+
 ### Backend project
 
 In the Vercel dashboard:
