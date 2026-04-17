@@ -451,9 +451,11 @@ const FacilityApproval = () => {
                           </h3>
                           {getFacilityTypeBadge(facility.facilityType)}
                         </div>
-                        <p className="flex items-center gap-2 text-sm text-gray-600">
-                          <Mail size={14} />
-                          <span className="truncate">{facility.email}</span>
+                        <p className="flex items-start gap-2 text-sm text-gray-600">
+                          <Mail size={14} className="mt-0.5 shrink-0" />
+                          <span className="break-all font-medium text-gray-700">
+                            {facility.email}
+                          </span>
                         </p>
                         <p className="mt-1 flex items-center gap-2 text-sm text-gray-600">
                           <Phone size={14} />

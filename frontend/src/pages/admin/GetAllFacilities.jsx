@@ -585,7 +585,7 @@ function GetAllFacilities() {
                       <h3 className="line-clamp-1 text-lg font-bold text-gray-800 transition-colors group-hover:text-red-600">
                         {facility.name}
                       </h3>
-                      <p className="mt-1 truncate text-sm text-gray-500">
+                      <p className="mt-2 rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-600 break-all">
                         {facility.email || "No email provided"}
                       </p>
                     </div>

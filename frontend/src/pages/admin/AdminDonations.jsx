@@ -157,11 +157,13 @@ function AdminDonations() {
                 className="bg-white rounded-2xl border border-red-100 p-6 shadow-sm"
               >
                 <div className="flex items-start justify-between gap-4 mb-4">
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h3 className="text-lg font-semibold text-gray-800">
                       {donation.donorName}
                     </h3>
-                    <p className="text-sm text-gray-500">{donation.donorEmail}</p>
+                    <p className="mt-2 rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-600 break-all">
+                      {donation.donorEmail}
+                    </p>
                   </div>
                   <span className="px-3 py-1 rounded-full bg-red-50 text-red-700 text-sm font-semibold border border-red-100">
                     {donation.bloodGroup}
