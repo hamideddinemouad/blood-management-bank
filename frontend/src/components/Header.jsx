@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { websiteName } from "../config/app";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { LogOut } from "lucide-react";
+import { buildApiUrl, websiteName } from "../config/app";
 import { clearCachedAuthSnapshot, fetchCurrentUser, getCachedAuthSnapshot } from "../utils/auth";
 
 const WEBSITE_NAME = websiteName;
@@ -46,6 +47,7 @@ export default function Header({ currentUser }) {
   const [authRole, setAuthRole] = useState(currentUser?.role || cachedSnapshot?.role || null);
   const [isAuthResolved, setIsAuthResolved] = useState(Boolean(currentUser || cachedSnapshot));
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let cancelled = false;
@@ -159,6 +161,25 @@ export default function Header({ currentUser }) {
     return location.pathname === path;
   };
 
+  const handleLogout = async () => {
+    try {
+      await fetch(buildApiUrl("/api/auth/logout"), {
+        method: "POST",
+        credentials: "include",
+      });
+    } catch (error) {
+      console.error("Logout failed:", error);
+    } finally {
+      clearCachedAuthSnapshot();
+      setAuthUser(null);
+      setAuthRole(null);
+      setIsAuthResolved(true);
+      window.dispatchEvent(new Event(AUTH_CHANGE_EVENT));
+      setMobileOpen(false);
+      navigate("/login");
+    }
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -245,21 +266,33 @@ export default function Header({ currentUser }) {
                 <div className="h-10 w-32 animate-pulse rounded-lg bg-gray-200"></div>
               </div>
             ) : (
-              authLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                    link.name.includes("Register")
-                      ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg hover:shadow-xl hover:from-red-700 hover:to-red-800 hover:scale-105"
-                      : isActiveLink(link.path)
-                      ? "text-red-700 bg-red-50"
-                      : "text-gray-700 hover:text-red-600 hover:bg-gray-50"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))
+              <>
+                {authLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                      link.name.includes("Register")
+                        ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg hover:shadow-xl hover:from-red-700 hover:to-red-800 hover:scale-105"
+                        : isActiveLink(link.path)
+                        ? "text-red-700 bg-red-50"
+                        : "text-gray-700 hover:text-red-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                {isAuthenticated && (
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="inline-flex items-center gap-2 rounded-lg border border-red-200 px-4 py-2 text-sm font-medium text-red-700 transition-all duration-200 hover:bg-red-50"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Logout
+                  </button>
+                )}
+              </>
             )}
           </nav>
 
@@ -344,6 +377,16 @@ export default function Header({ currentUser }) {
                   {link.name}
                 </Link>
               ))}
+              {isAuthenticated && (
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-red-200 px-4 py-3 text-base font-medium text-red-700 transition-all duration-200 hover:bg-red-50"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Logout
+                </button>
+              )}
             </div>
           </div>
         </div>
