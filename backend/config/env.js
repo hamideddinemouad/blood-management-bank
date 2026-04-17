@@ -8,6 +8,26 @@ const DEFAULT_CORS_ORIGINS = [
   "http://localhost:5174",
 ];
 
+const escapeRegex = (value) =>
+  value.replace(/[|\\{}()[\]^$+?.]/g, "\\$&");
+
+const wildcardToRegex = (pattern) => {
+  if (!pattern) {
+    return null;
+  }
+
+  const normalizedPattern = pattern.trim();
+
+  if (!normalizedPattern) {
+    return null;
+  }
+
+  return new RegExp(
+    `^${escapeRegex(normalizedPattern).replaceAll("\\*", ".*")}$`,
+    "i",
+  );
+};
+
 const getOptionalEnv = (name, fallback = "") => {
   const value = process.env[name];
   return typeof value === "string" ? value.trim() : fallback;
@@ -43,8 +63,30 @@ export const getCorsOrigins = () => {
     .filter(Boolean);
 };
 
+export const getCorsOriginPatterns = () => {
+  const configuredPatterns = getOptionalEnv("CORS_ORIGIN_PATTERNS");
+
+  return configuredPatterns
+    .split(",")
+    .map((item) => wildcardToRegex(item))
+    .filter(Boolean);
+};
+
+export const isAllowedCorsOrigin = (origin = "") => {
+  if (!origin) {
+    return true;
+  }
+
+  const exactMatches = getCorsOrigins();
+  if (exactMatches.includes(origin)) {
+    return true;
+  }
+
+  return getCorsOriginPatterns().some((pattern) => pattern.test(origin));
+};
+
 export const getCookieSameSite = () =>
-  getOptionalEnv("COOKIE_SAME_SITE", "lax");
+  getOptionalEnv("COOKIE_SAME_SITE", isProduction() ? "none" : "lax");
 
 export const isSwaggerEnabled = () =>
   !isProduction() || getOptionalEnv("ENABLE_SWAGGER") === "true";

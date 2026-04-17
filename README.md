@@ -138,6 +138,53 @@ Services:
 - Backend: `http://localhost:3000`
 - MongoDB: `mongodb://localhost:27017`
 
+## Deploying On Vercel
+
+The safest setup for this repository is to deploy it as two Vercel projects from the same Git repository:
+
+- `frontend` as a Vite project
+- `backend` as an Express project
+
+This avoids the current Vercel Services beta requirement and matches Vercel's zero-config support for both frameworks.
+
+### Frontend project
+
+In the Vercel dashboard:
+
+1. Import the repository
+2. Set the Root Directory to `frontend`
+3. Add the environment variable:
+
+```bash
+VITE_API_URL=https://your-backend-project.vercel.app
+```
+
+For SPA deep links on Vercel, this repo includes `frontend/vercel.json`.
+
+### Backend project
+
+In the Vercel dashboard:
+
+1. Import the same repository again
+2. Set the Root Directory to `backend`
+3. Add these environment variables:
+
+```bash
+MONGO_URI=your_production_mongodb_connection_string
+JWT_SECRET=your_long_random_secret
+NODE_ENV=production
+COOKIE_SAME_SITE=none
+CORS_ORIGINS=https://your-frontend-project.vercel.app
+CORS_ORIGIN_PATTERNS=https://*.vercel.app
+ENABLE_SWAGGER=false
+```
+
+Notes:
+
+- `COOKIE_SAME_SITE=none` is important when frontend and backend are deployed on different Vercel domains and the app uses cookies with `credentials: "include"`.
+- `CORS_ORIGIN_PATTERNS=https://*.vercel.app` allows preview deployments to work without editing CORS for every new preview URL.
+- If you attach a custom frontend domain, add it to `CORS_ORIGINS`.
+
 ## Demo Data
 
 The project includes seeded demo accounts and sample data.
