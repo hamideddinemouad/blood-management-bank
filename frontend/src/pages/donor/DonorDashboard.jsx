@@ -29,6 +29,22 @@ import MobileShieldLoader from "../../components/MobileShieldLoader";
 
 const API_URL = buildApiUrl("/api/donor");
 
+const normalizeDonorPayload = (data) => {
+  if (!data || typeof data !== "object") {
+    return null;
+  }
+
+  if (data.donor && typeof data.donor === "object") {
+    return data.donor;
+  }
+
+  if (data.user && typeof data.user === "object") {
+    return data.user;
+  }
+
+  return data;
+};
+
 const DonorDashboard = () => {
   const navigate = useNavigate();
   const [dashboard, setDashboard] = useState(null);
@@ -64,7 +80,12 @@ const DonorDashboard = () => {
       console.log("📜 History Response:", historyRes.data);
       console.log("📊 Stats Response:", statsRes.data);
 
-      const donorData = profileRes.data.donor || profileRes.data;
+      const donorData = normalizeDonorPayload(profileRes.data);
+
+      if (!donorData) {
+        throw new Error("Donor profile payload is missing");
+      }
+
       setDonor(donorData);
 
       // Handle different response structures for history

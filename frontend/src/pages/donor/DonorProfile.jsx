@@ -40,6 +40,22 @@ const GENDER_OPTIONS = [
   { value: "other", label: "Other" }
 ];
 
+const normalizeDonorPayload = (data) => {
+  if (!data || typeof data !== "object") {
+    return null;
+  }
+
+  if (data.donor && typeof data.donor === "object") {
+    return data.donor;
+  }
+
+  if (data.user && typeof data.user === "object") {
+    return data.user;
+  }
+
+  return data;
+};
+
 const DonorProfile = () => {
   const [donor, setDonor] = useState(null);
   const [formData, setFormData] = useState({
@@ -122,30 +138,33 @@ const DonorProfile = () => {
         },
       });
 
-      const lastDonationDate = data.donor.lastDonationDate || data.donor.lastDonation;
+      const donorPayload = normalizeDonorPayload(data);
 
-      if (data.donor) {
-        setDonor(data.donor);
+      if (donorPayload) {
+        const lastDonationDate =
+          donorPayload.lastDonationDate || donorPayload.lastDonation || null;
+
         setFormData({
-          fullName: data.donor.fullName || "",
-          phone: data.donor.phone || "",
-          age: data.donor.age || "",
-          gender: data.donor.gender || "",
-          weight: data.donor.weight || "",
-          bloodGroup: data.donor.bloodGroup || "",
+          fullName: donorPayload.fullName || "",
+          phone: donorPayload.phone || "",
+          age: donorPayload.age || "",
+          gender: donorPayload.gender || "",
+          weight: donorPayload.weight || "",
+          bloodGroup: donorPayload.bloodGroup || "",
           address: {
-            street: data.donor.address?.street || "",
-            city: data.donor.address?.city || "",
-            state: data.donor.address?.state || "",
-            pincode: data.donor.address?.pincode || "",
+            street: donorPayload.address?.street || "",
+            city: donorPayload.address?.city || "",
+            state: donorPayload.address?.state || "",
+            pincode: donorPayload.address?.pincode || "",
           },
           password: ""
         });
         setDonor({
-            ...data.donor,
-            lastDonation: lastDonationDate, // Use the correct key for the display logic below
-            status: data.donor.status || "active", // Default to active if status is missing
-            donorId: data.donor._id, // Use _id as donorId if a specific one isn't provided
+            ...donorPayload,
+            lastDonationDate,
+            lastDonation: lastDonationDate,
+            status: donorPayload.status || "active",
+            donorId: donorPayload.donorId || donorPayload._id,
         });
       } else {
         throw new Error(data.message);
