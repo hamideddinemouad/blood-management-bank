@@ -29,7 +29,6 @@ export async function loginWithDemoRole(roleKey, navigate) {
     throw new Error(data.message || "Demo login failed");
   }
 
-  const role = data.user?.role || roleKey;
   cacheAuthSnapshot(data.user || null);
   window.dispatchEvent(new Event("bbms-auth-changed"));
 

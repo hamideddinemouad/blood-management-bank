@@ -93,15 +93,6 @@ const DonorDirectory = () => {
     }
   };
 
-  // Check donor availability
-  const isDonorAvailable = (lastDonationDate) => {
-    if (!lastDonationDate) return true;
-    const lastDonation = new Date(lastDonationDate);
-    const threeMonthsAgo = new Date();
-    threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
-    return lastDonation < threeMonthsAgo;
-  };
-
   const getAvailabilityStatus = (lastDonationDate) => {
     if (!lastDonationDate) return { status: "available", text: "Available", color: "bg-green-100 text-green-800" };
     
