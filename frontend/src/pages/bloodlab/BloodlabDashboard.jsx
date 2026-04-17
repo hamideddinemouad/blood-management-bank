@@ -291,7 +291,6 @@ const BloodLabDashboard = () => {
               icon={<MapPin className="w-4 h-4" />}
               label="Location"
               value={`${lab.address?.city}, ${lab.address?.state}`}
-              truncate
             />
           </div>
         </div>
@@ -517,7 +516,7 @@ const Section = ({ title, icon, subtitle, children, className = "" }) => (
   </div>
 );
 
-const LabInfo = ({ icon, label, value, truncate = false, isEmail = false }) => (
+const LabInfo = ({ icon, label, value, isEmail = false }) => (
   <div className="flex min-w-0 items-start gap-3">
     <div className="mt-1 shrink-0 rounded-lg bg-red-100 p-2 text-red-600">
       {icon}
@@ -528,9 +527,7 @@ const LabInfo = ({ icon, label, value, truncate = false, isEmail = false }) => (
         className={`font-medium text-gray-800 ${
           isEmail
             ? "break-all rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-700"
-            : truncate
-              ? "truncate"
-              : "break-words whitespace-normal"
+            : "break-words whitespace-normal leading-6"
         }`}
       >
         {value || "—"}
