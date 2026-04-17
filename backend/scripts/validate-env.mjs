@@ -41,7 +41,7 @@ const validateWildcardUrlPatterns = (name, value) => {
   }
 };
 
-const mongoUri = getRequiredEnv("MONGO_URI");
+const mongoUri = getRequiredEnv("MONGODB_URI");
 const jwtSecret = getRequiredEnv("JWT_SECRET");
 const nodeEnv = getRequiredEnv("NODE_ENV");
 const cookieSameSite = getRequiredEnv("COOKIE_SAME_SITE");
@@ -50,7 +50,7 @@ const swaggerFlag = process.env.ENABLE_SWAGGER?.trim() || "";
 const corsOriginPatterns = process.env.CORS_ORIGIN_PATTERNS?.trim() || "";
 
 if (mongoUri && !/^mongodb(\+srv)?:\/\//.test(mongoUri)) {
-  errors.push("MONGO_URI must start with mongodb:// or mongodb+srv://");
+  errors.push("MONGODB_URI must start with mongodb:// or mongodb+srv://");
 }
 
 if (jwtSecret) {
