@@ -29,10 +29,10 @@ export default function DemoAccessPanel({
             "inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-orange-700",
           iconWrap:
             "rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 p-3 text-white shadow-lg",
-          grid: "grid gap-3 md:grid-cols-2",
+          grid: "grid gap-4 xl:grid-cols-2",
           button:
-            "w-full cursor-pointer rounded-2xl border border-orange-200 bg-white px-4 py-4 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:shadow-lg motion-reduce:transition-none disabled:opacity-60",
-          metaGrid: "mt-5 grid gap-3 sm:grid-cols-3",
+            "w-full cursor-pointer rounded-2xl border border-orange-200 bg-white px-5 py-5 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:shadow-lg motion-reduce:transition-none disabled:opacity-60",
+          metaGrid: "mt-5 grid gap-3 lg:grid-cols-3",
           metaCard:
             "rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm text-slate-700 shadow-sm",
         }
@@ -87,10 +87,10 @@ export default function DemoAccessPanel({
       </div>
 
       <div className="mt-4 flex items-start gap-3">
-        <div className={styles.iconWrap}>
+        <div className={`${styles.iconWrap} shrink-0`}>
           <Sparkles className="h-5 w-5" />
         </div>
-        <div>
+        <div className="min-w-0">
           <h3 className="text-xl font-bold text-slate-900">{title}</h3>
           <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-600">
             {description}
@@ -162,25 +162,25 @@ export default function DemoAccessPanel({
               disabled={Boolean(loadingRole)}
               className={styles.button}
             >
-              <div className="flex items-center justify-between gap-3">
-                <div>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0 flex-1">
                   <div className="text-base font-semibold text-slate-900">
                     Demo as {account.label}
                   </div>
-                  <div className="mt-1 text-sm text-slate-600">
+                  <div className="mt-1 text-sm leading-6 text-slate-600">
                     {isLoading
                       ? "Preparing a fresh demo dataset for this role..."
                       : account.description}
                   </div>
-                  <div className="mt-2 text-xs font-medium text-orange-700">
+                  <div className="mt-2 break-all text-xs font-medium text-orange-700">
                     {account.email}
                   </div>
                 </div>
-                <div className="rounded-xl bg-red-100 p-2 text-red-600">
+                <div className="self-start rounded-xl bg-red-100 p-2.5 text-red-600 shadow-sm shrink-0">
                   {isLoading ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <Loader2 className="h-5 w-5 animate-spin" />
                   ) : (
-                    <LogIn className="h-4 w-4" />
+                    <LogIn className="h-5 w-5" />
                   )}
                 </div>
               </div>

@@ -92,8 +92,8 @@ export default function Login() {
 
   return (
     <div className="min-h-[calc(100vh-10rem)] bg-[radial-gradient(circle_at_top,_rgba(249,115,22,0.14),_transparent_30%),linear-gradient(180deg,#fff8f5_0%,#f8fafc_100%)] px-4 py-10">
-      <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-        <DemoFirstSection />
+      <div className="mx-auto grid w-full max-w-7xl gap-8 xl:grid-cols-[1.22fr_0.78fr]">
+        <DemoFirstSection className="h-full p-7 xl:p-8" />
 
         <section className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-xl">
           <h2 className="text-2xl font-bold text-center text-gray-900 mb-4">
