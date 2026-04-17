@@ -49,7 +49,7 @@ export const isProduction = () => getNodeEnv() === "production";
 
 export const getPort = () => Number(getOptionalEnv("PORT", "5000"));
 
-export const getMongoUri = () => getRequiredEnv("MONGO_URI");
+export const getMongoUri = () => getRequiredEnv("MONGODB_URI");
 
 export const getJwtSecret = () => getRequiredEnv("JWT_SECRET");
 
@@ -122,7 +122,7 @@ const maskMongoUri = (value = "") => {
 export const getMaskedEnvDebugSnapshot = () => ({
   NODE_ENV: getNodeEnv(),
   PORT: String(getPort()),
-  MONGO_URI: maskMongoUri(getOptionalEnv("MONGO_URI")),
+  MONGODB_URI: maskMongoUri(getOptionalEnv("MONGODB_URI")),
   JWT_SECRET: maskValue(getOptionalEnv("JWT_SECRET"), {
     visibleStart: 3,
     visibleEnd: 3,

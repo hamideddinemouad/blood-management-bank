@@ -80,7 +80,7 @@ npm install
 Create `backend/.env` from `backend/.env.example`:
 
 ```bash
-MONGO_URI=mongodb://127.0.0.1:27017/bbms
+MONGODB_URI=mongodb://127.0.0.1:27017/bbms
 JWT_SECRET=replace_with_a_real_secret
 COOKIE_SAME_SITE=lax
 PORT=5000
@@ -178,7 +178,7 @@ In the Vercel dashboard:
 3. Add these environment variables:
 
 ```bash
-MONGO_URI=your_production_mongodb_connection_string
+MONGODB_URI=your_production_mongodb_connection_string
 JWT_SECRET=your_long_random_secret
 NODE_ENV=production
 COOKIE_SAME_SITE=none
