@@ -1,7 +1,6 @@
 import { toast } from "react-hot-toast";
 import { demoAccounts } from "./demoAccounts";
 import { cacheAuthSnapshot } from "./auth";
-import { buildApiUrl } from "./api";
 
 export async function loginWithDemoRole(roleKey, navigate) {
   const account = demoAccounts[roleKey];
@@ -10,7 +9,7 @@ export async function loginWithDemoRole(roleKey, navigate) {
     throw new Error("Unknown demo role");
   }
 
-  const apiUrl = buildApiUrl("/api/auth/demo-access");
+  const apiUrl = `${import.meta.env.VITE_API_URL || ""}/api/auth/demo-access`;
   const res = await fetch(apiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

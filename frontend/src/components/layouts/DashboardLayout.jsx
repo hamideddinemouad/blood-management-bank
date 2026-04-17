@@ -26,7 +26,6 @@ import {
   Settings,
   Loader2,
 } from "lucide-react";
-import { buildApiUrl } from "../../utils/api";
 import { clearCachedAuthSnapshot, fetchCurrentUser } from "../../utils/auth";
 
 const DashboardLayout = ({ userRole = "donor" }) => {
@@ -262,7 +261,7 @@ const DashboardLayout = ({ userRole = "donor" }) => {
 
   const handleLogout = async () => {
     try {
-      await fetch(buildApiUrl("/api/auth/logout"), {
+      await fetch(`${import.meta.env.VITE_API_URL || ""}/api/auth/logout`, {
         method: "POST",
         credentials: "include",
       });
