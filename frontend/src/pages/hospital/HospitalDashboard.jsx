@@ -270,7 +270,9 @@ const HospitalDashboard = () => {
                   <h2 className="text-2xl font-semibold text-gray-800">
                     {hospital.name}
                   </h2>
-                  <p className="text-gray-500">{hospital.email}</p>
+                  <p className="mt-2 inline-block max-w-full rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-600 break-all">
+                    {hospital.email}
+                  </p>
 
                   <div className="flex flex-wrap gap-4 mt-3">
                     <p className="text-gray-600 flex items-center gap-2">
