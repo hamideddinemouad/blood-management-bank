@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 import {
   Loader2,
   Save,
@@ -31,7 +32,7 @@ import {
   sanitizeMoroccanPhoneInput,
 } from "../../utils/moroccanPhone";
 
-const API_BASE_URL = "/api";
+const API_URL = buildApiUrl("/api/donor");
 
 const BLOOD_GROUPS = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
 const GENDER_OPTIONS = [
@@ -132,7 +133,8 @@ const DonorProfile = () => {
       setLoading(true);
       const token = localStorage.getItem("token");
 
-      const { data } = await axios.get(`${API_BASE_URL}/donor/profile`, {
+      const { data } = await axios.get(`${API_URL}/profile`, {
+        withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -270,9 +272,10 @@ const DonorProfile = () => {
       }
 
       const { data } = await axios.put(
-        `${API_BASE_URL}/donor/profile`,
+        `${API_URL}/profile`,
         payload,
         {
+          withCredentials: true,
           headers: {
             Authorization: `Bearer ${token}`,
           },

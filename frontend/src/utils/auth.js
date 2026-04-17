@@ -7,6 +7,14 @@ const DEMO_EMAIL_DOMAINS = ["@bbmsmaroc.com", "@bbmsdemo.com"];
 
 const isBrowser = () => typeof window !== "undefined";
 
+const getStoredToken = () => {
+  if (!isBrowser()) {
+    return "";
+  }
+
+  return window.localStorage.getItem("token") || "";
+};
+
 export const isDemoEmail = (email = "") => {
   const normalizedEmail = email.trim().toLowerCase();
   return DEMO_EMAIL_DOMAINS.some((domain) =>
@@ -117,8 +125,12 @@ export const isTokenValid = () => {
 };
 
 export const fetchCurrentUser = async () => {
+  const token = getStoredToken();
+  const headers = token ? { Authorization: `Bearer ${token}` } : undefined;
+
   const response = await fetch(buildApiUrl("/api/auth/profile"), {
     credentials: "include",
+    ...(headers ? { headers } : {}),
   });
 
   if (!response.ok) {
