@@ -10,6 +10,7 @@ vi.mock("react-hot-toast", () => ({
 
 describe("auth utils", () => {
   beforeEach(() => {
+    window.localStorage.clear();
     window.sessionStorage.clear();
     window.history.replaceState({}, "", "/");
   });
@@ -135,5 +136,35 @@ describe("auth utils", () => {
       fullName: "Demo Donor",
       email: "demo.donor@bbmsmaroc.com",
     });
+  });
+
+  it("adds a bearer token to current-user checks when a legacy token exists", async () => {
+    vi.stubEnv("VITE_API_URL", "https://blood-management-bank-api.vercel.app");
+    window.localStorage.setItem("token", "legacy-token");
+
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: vi.fn().mockResolvedValue({
+        user: {
+          id: "u1",
+          role: "donor",
+          email: "demo.donor@bbmsmaroc.com",
+        },
+      }),
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const { fetchCurrentUser } = await import("./auth");
+
+    await fetchCurrentUser();
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://blood-management-bank-api.vercel.app/api/auth/profile",
+      {
+        credentials: "include",
+        headers: { Authorization: "Bearer legacy-token" },
+      },
+    );
   });
 });
