@@ -216,37 +216,100 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-r from-red-700 to-red-900 text-white">
         <div className="absolute inset-0 opacity-20"></div>
-        <div className="container mx-auto px-4 py-20 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium mb-6 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-16 md:py-20 relative z-10">
+          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium mb-6 backdrop-blur-sm">
               <Heart className="w-4 h-4" />
               Saving Lives Every Day
+              </div>
+
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                Connect{" "}
+                <span className="bg-gradient-to-r from-red-200 to-red-300 bg-clip-text text-transparent">
+                  Blood Donors
+                </span>{" "}
+                with Those in Need
+              </h1>
+
+              <p className="text-lg md:text-xl text-red-100 mb-8 max-w-2xl lg:mx-0 mx-auto">
+                Our advanced blood bank management system ensures efficient
+                donation, storage, and distribution of blood products to save
+                lives when every second counts.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link
+                  to="/fast-test"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-orange-500 px-7 py-4 text-lg font-semibold text-white shadow-[0_20px_45px_-20px_rgba(249,115,22,0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-orange-400 hover:shadow-[0_26px_55px_-22px_rgba(249,115,22,0.95)]"
+                >
+                  Try The Live Demo
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+                <Link
+                  to="/login"
+                  className="inline-flex items-center justify-center rounded-2xl border-2 border-white/80 px-6 py-4 text-lg font-medium text-white transition-all duration-200 hover:bg-white/10"
+                >
+                  Sign In Manually
+                </Link>
+              </div>
+
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-red-100 lg:justify-start">
+                <div className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+                  No registration required
+                </div>
+                <div className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+                  4 preloaded roles
+                </div>
+                <div className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+                  Best way to preview the product
+                </div>
+              </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Connect{" "}
-              <span className="bg-gradient-to-r from-red-200 to-red-300 bg-clip-text text-transparent">
-                Blood Donors
-              </span>{" "}
-              with Those in Need
-            </h1>
+            <div className="rounded-[2rem] border border-white/20 bg-white/10 p-6 backdrop-blur-md shadow-[0_30px_80px_-40px_rgba(15,23,42,0.7)]">
+              <div className="inline-flex items-center gap-2 rounded-full bg-orange-500/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-orange-100">
+                <Zap className="h-4 w-4" />
+                Start Here
+              </div>
+              <h2 className="mt-5 text-2xl font-bold text-white">
+                Don&apos;t just read about the platform. Open it.
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-red-100">
+                Most visitors understand BBMS fastest by entering a ready-made
+                workspace. The Fast Test route drops you directly into realistic
+                admin, donor, hospital, and blood lab experiences.
+              </p>
 
-            <p className="text-lg md:text-xl text-red-100 mb-8 max-w-2xl mx-auto">
-              Our advanced blood bank management system ensures efficient
-              donation, storage, and distribution of blood products to save
-              lives when every second counts.
-            </p>
+              <div className="mt-6 grid gap-3">
+                <div className="rounded-2xl bg-white/10 px-4 py-4">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                    <CheckCircle className="h-4 w-4 text-orange-300" />
+                    See real dashboards immediately
+                  </div>
+                  <p className="mt-1 text-sm text-red-100">
+                    Explore seeded requests, camps, donors, and inventory
+                    without filling any forms first.
+                  </p>
+                </div>
+                <div className="rounded-2xl bg-white/10 px-4 py-4">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                    <Shield className="h-4 w-4 text-orange-300" />
+                    Trusted preview path
+                  </div>
+                  <p className="mt-1 text-sm text-red-100">
+                    Ideal for recruiters, testers, and first-time visitors who
+                    need the product value fast.
+                  </p>
+                </div>
+              </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/fast-test">
-                <button className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium rounded-xl bg-red-950/50 text-white hover:bg-red-950/65 transition-all duration-300">
-                  Fast Test
-                </button>
-              </Link>
-              <Link to="/about">
-                <button className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium rounded-xl border-2 border-white text-white hover:bg-white/10 transition-all duration-300">
-                  Learn More
-                </button>
+              <Link
+                to="/fast-test"
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-5 py-4 text-base font-semibold text-red-700 transition-all duration-200 hover:bg-orange-50"
+              >
+                Open Fast Test
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
