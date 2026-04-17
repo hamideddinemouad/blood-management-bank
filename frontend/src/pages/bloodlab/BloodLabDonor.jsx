@@ -113,24 +113,6 @@ const BloodLabDonor = () => {
     }
   };
 
-  // Quick donation (1 unit, no remarks)
-  const quickDonation = async (donorId) => {
-    try {
-      const token = localStorage.getItem("token");
-      await axios.post(
-        `/api/blood-lab/donors/donate/${donorId}`,
-        { quantity: 1, remarks: "Quick donation" },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-
-      toast.success("Donation recorded!");
-      searchDonors();
-      loadRecentDonations();
-    } catch (err) {
-      toast.error("Failed to record donation");
-    }
-  };
-
   const canDonate = (lastDonationDate) => {
     if (!lastDonationDate) return true;
     const lastDonation = new Date(lastDonationDate);

@@ -87,7 +87,7 @@ export default function Header({ currentUser }) {
           setAuthRole(user?.role || null);
           setIsAuthResolved(true);
         }
-      } catch (error) {
+      } catch {
         if (!cancelled) {
           clearAuthState();
         }

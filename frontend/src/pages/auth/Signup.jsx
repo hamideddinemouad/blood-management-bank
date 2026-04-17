@@ -18,7 +18,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/auth/register", formData);
+      await axios.post("/api/auth/register", formData);
       alert("✅ Registered Successfully!");
       navigate("/login"); // redirect after success
     } catch (err) {

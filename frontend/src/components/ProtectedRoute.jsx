@@ -22,7 +22,7 @@ const ProtectedRoute = ({ children }) => {
         if (!cancelled) {
           setIsAllowed(true);
         }
-      } catch (error) {
+      } catch {
         if (!cancelled) {
           handleAuthError(navigate);
         }

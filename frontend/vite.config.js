@@ -19,4 +19,15 @@ export default defineConfig({
       },
     },
   },
+  test: {
+    environment: 'jsdom',
+    environmentOptions: {
+      jsdom: {
+        url: 'https://frontend.example.com/',
+      },
+    },
+    setupFiles: './src/test/setup.js',
+    css: true,
+    clearMocks: true,
+  },
 })
