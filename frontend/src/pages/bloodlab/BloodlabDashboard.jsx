@@ -268,7 +268,7 @@ const BloodLabDashboard = () => {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
             <LabInfo
               icon={<Mail className="w-4 h-4" />}
               label="Email"
@@ -297,7 +297,7 @@ const BloodLabDashboard = () => {
       )}
 
       {/* Key Metrics Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-2 mb-8">
         <MetricCard
           icon={<Calendar className="w-6 h-6" />}
           label="Total Camps"

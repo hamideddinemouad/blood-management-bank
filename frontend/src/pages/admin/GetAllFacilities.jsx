@@ -572,11 +572,11 @@ function GetAllFacilities() {
             )}
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {filteredFacilities.map((facility) => (
               <div
                 key={facility._id}
-                className="soft-card group rounded-3xl border border-red-100 bg-white p-6 shadow-lg hover:shadow-xl"
+                className="soft-card group rounded-3xl border border-red-100 bg-white p-7 shadow-lg hover:shadow-xl"
               >
                 {/* Header with Name and Badges */}
                 <div className="mb-4 border-b border-gray-100 pb-4">

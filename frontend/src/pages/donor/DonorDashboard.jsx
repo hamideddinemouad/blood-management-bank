@@ -329,7 +329,7 @@ Thank you for supporting the donor community and helping save lives.
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
             <LabInfo
               icon={<Mail className="w-4 h-4" />}
               label="Email"
@@ -356,7 +356,7 @@ Thank you for supporting the donor community and helping save lives.
       )}
 
       {/* Key Metrics Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-2 mb-8">
         <MetricCard
           icon={<Droplet className="w-6 h-6" />}
           label="Total Donations"
@@ -489,7 +489,7 @@ Thank you for supporting the donor community and helping save lives.
           subtitle="Your health metrics"
           className="mt-8"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
             <HealthStat
               label="Age"
               value={donor.age || "N/A"}
