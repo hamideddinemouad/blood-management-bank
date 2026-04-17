@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
   ArrowLeft,
+  ArrowRight,
   Bell,
   LogOut,
   Menu,
@@ -25,9 +26,14 @@ import {
   Search,
   Settings,
   Loader2,
+  Sparkles,
 } from "lucide-react";
 import { buildApiUrl } from "../../config/app";
-import { clearCachedAuthSnapshot, fetchCurrentUser } from "../../utils/auth";
+import {
+  clearCachedAuthSnapshot,
+  fetchCurrentUser,
+  isDemoEmail,
+} from "../../utils/auth";
 
 const DashboardLayout = ({ userRole = "donor" }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -252,6 +258,7 @@ const DashboardLayout = ({ userRole = "donor" }) => {
   }, []);
 
   const normalizedRole = userRole?.toLowerCase().replace("-", "_");
+  const showDemoPasswordHint = isDemoEmail(userData?.email || "");
   const config = menuConfig[normalizedRole] || {
     title: "Dashboard",
     subtitle: "Welcome to the Blood Bank System",
@@ -553,6 +560,37 @@ const DashboardLayout = ({ userRole = "donor" }) => {
           }`}
         >
           <div className="h-full overflow-auto p-4 sm:p-6 pb-24 sm:pb-28 lg:pb-6">
+            {showDemoPasswordHint && (
+              <div className="mb-6 rounded-3xl border border-orange-200 bg-gradient-to-r from-orange-50 via-white to-red-50 p-4 shadow-[0_20px_50px_-40px_rgba(249,115,22,0.8)]">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-start gap-3">
+                    <div className="rounded-2xl bg-orange-500 p-2.5 text-white shadow-sm">
+                      <Sparkles className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-orange-700">
+                        Demo Login Hint
+                      </p>
+                      <p className="mt-1 text-sm font-semibold text-slate-900">
+                        Any demo email you see here uses the same password:
+                        {" "}
+                        <span className="rounded-lg bg-slate-900 px-2 py-1 font-mono text-xs text-white">
+                          the email itself
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => navigate("/fast-test")}
+                    className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-2xl border border-orange-200 bg-white px-4 py-3 text-sm font-semibold text-orange-700 transition-all duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:ring-2 focus-visible:ring-orange-400 motion-reduce:transition-none"
+                  >
+                    Demo Setup
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            )}
             {/* PASSING DATA TO OUTLET HERE */}
             <Outlet context={{ userData, theme }} />
           </div>
