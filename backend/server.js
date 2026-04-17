@@ -1,8 +1,6 @@
-import { getMaskedEnvDebugSnapshot, getPort } from "./config/env.js";
+import { getPort } from "./config/env.js";
 import app from "./app.js";
 import connectDB from "./config/db.js";
-
-console.log("Backend env debug snapshot:", getMaskedEnvDebugSnapshot());
 
 await connectDB();
 

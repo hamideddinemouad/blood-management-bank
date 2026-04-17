@@ -1,10 +1,6 @@
 import express from "express";
 import cors from "cors";
-import {
-  getMaskedEnvDebugSnapshot,
-  isAllowedCorsOrigin,
-  isSwaggerEnabled,
-} from "./config/env.js";
+import { isAllowedCorsOrigin, isSwaggerEnabled } from "./config/env.js";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import donorRoutes from "./routes/donorRoutes.js";
@@ -21,12 +17,6 @@ const app = express();
 app.disable("x-powered-by");
 app.use(applySecurityHeaders);
 app.use(async (req, _res, next) => {
-  console.log("Backend request env debug:", {
-    method: req.method,
-    path: req.originalUrl,
-    env: getMaskedEnvDebugSnapshot(),
-  });
-
   try {
     await connectDB();
     next();
