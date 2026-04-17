@@ -192,6 +192,7 @@ Notes:
 - `COOKIE_SAME_SITE=none` is important when frontend and backend are deployed on different Vercel domains and the app uses cookies with `credentials: "include"`.
 - `CORS_ORIGIN_PATTERNS=https://*.vercel.app` allows preview deployments to work without editing CORS for every new preview URL.
 - If you attach a custom frontend domain, add it to `CORS_ORIGINS`.
+- The backend Vercel build now fails fast if required production env vars are missing or malformed.
 
 ## Demo Data
 

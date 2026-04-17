@@ -7,6 +7,7 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
+    "build": "node ./scripts/validate-env.mjs",
     "dev": "nodemon server.js",
     "seed:admin": "node seedAdmin.js",
     "seed:demo": "node seedDemo.js",
