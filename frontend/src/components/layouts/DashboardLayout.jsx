@@ -410,6 +410,16 @@ const DashboardLayout = ({ userRole = "donor" }) => {
           </button>
 
           <button
+            onClick={handleLogout}
+            className="sm:hidden p-2 rounded-lg hover:bg-red-100 transition-all duration-200"
+            style={{ color: theme.primary[600] }}
+            title="Logout"
+            aria-label="Logout"
+          >
+            <LogOut size={20} />
+          </button>
+
+          <button
             onClick={() => navigate("/fast-test")}
             className="md:hidden p-2 rounded-lg hover:bg-red-100 transition-all duration-200"
             style={{ color: theme.primary[600] }}
