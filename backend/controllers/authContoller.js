@@ -8,7 +8,7 @@ import { getJwtSecret } from "../config/env.js";
 import { DEMO_LOGIN_ACCOUNTS, seedDemoData } from "../seedDemo.js";
 import { clearAuthCookie, setAuthCookie } from "../utils/authCookie.js";
 const DEMO_SEED_STATE_KEY = "demo-seed";
-const DEMO_SEED_TTL_MS = 1 * 1000;
+const DEMO_SEED_TTL_MS = 2 * 60 * 60 * 1000;
 const DEMO_SEED_LOCK_MS = 5 * 60 * 1000;
 const DEMO_SEED_WAIT_TIMEOUT_MS = 30 * 1000;
 const DEMO_SEED_WAIT_INTERVAL_MS = 1000;
