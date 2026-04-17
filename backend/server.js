@@ -1,8 +1,10 @@
-import { getPort } from "./config/env.js";
+import { getMaskedEnvDebugSnapshot, getPort } from "./config/env.js";
 import { createApp } from "./app.js";
 import connectDB from "./config/db.js";
 
 const app = createApp();
+
+console.log("Backend env debug snapshot:", getMaskedEnvDebugSnapshot());
 
 await connectDB();
 
