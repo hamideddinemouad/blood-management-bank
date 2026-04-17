@@ -27,10 +27,20 @@ export const createApp = () => {
     credentials: true
   }));
   if (isSwaggerEnabled()) {
+    app.get("/", (_req, res) => {
+      res.redirect("/api/doc");
+    });
     app.get("/api/doc.json", (_req, res) => {
       res.json(swaggerSpec);
     });
     app.use("/api/doc", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  } else {
+    app.get("/", (_req, res) => {
+      res.status(200).json({
+        success: true,
+        message: "BBMS API is running"
+      });
+    });
   }
   app.use("/api/auth", authRoutes);
   app.use("/api/donor", donorRoutes);

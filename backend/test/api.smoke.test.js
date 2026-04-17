@@ -176,6 +176,9 @@ test.beforeEach(async () => {
 });
 test("public and auth endpoints respond", async () => {
   const fixtures = await createBaseFixtures();
+  const root = await request(app).get("/");
+  assert.equal(root.status, 302);
+  assert.equal(root.headers.location, "/api/doc");
   const landingStats = await request(app).get("/api/public/landing-stats");
   assert.equal(landingStats.status, 200);
   assert.equal(landingStats.body.success, true);
