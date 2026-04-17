@@ -24,17 +24,17 @@ export default function DemoAccessPanel({
     variant === "priority"
       ? {
           wrapper:
-            "rounded-[2rem] border border-orange-200 bg-gradient-to-br from-orange-50 via-white to-red-50 p-6 md:p-8 shadow-[0_30px_80px_-40px_rgba(249,115,22,0.55)]",
+            "rounded-[1.5rem] border border-orange-200 bg-gradient-to-br from-orange-50 via-white to-red-50 p-4 shadow-[0_30px_80px_-40px_rgba(249,115,22,0.55)] sm:rounded-[2rem] sm:p-6 md:p-8",
           badge:
-            "inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-orange-700",
+            "inline-flex items-center gap-2 rounded-full bg-orange-100 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-orange-700 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.24em]",
           iconWrap:
-            "rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 p-3 text-white shadow-lg",
-          grid: "grid gap-4 xl:grid-cols-2",
+            "rounded-xl bg-gradient-to-br from-orange-500 to-red-600 p-2.5 text-white shadow-lg sm:rounded-2xl sm:p-3",
+          grid: "grid gap-3 sm:gap-4 xl:grid-cols-2",
           button:
-            "w-full cursor-pointer rounded-2xl border border-orange-200 bg-white px-5 py-5 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:shadow-lg motion-reduce:transition-none disabled:opacity-60",
-          metaGrid: "mt-5 grid gap-3 lg:grid-cols-3",
+            "w-full cursor-pointer rounded-xl border border-orange-200 bg-white px-4 py-4 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:shadow-lg motion-reduce:transition-none disabled:opacity-60 sm:rounded-2xl sm:px-5 sm:py-5",
+          metaGrid: "mt-4 grid gap-3 sm:mt-5 lg:grid-cols-3",
           metaCard:
-            "rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm text-slate-700 shadow-sm",
+            "rounded-xl border border-white/80 bg-white/80 px-3 py-3 text-sm text-slate-700 shadow-sm sm:rounded-2xl sm:px-4",
         }
       : variant === "compact"
         ? {
@@ -86,17 +86,17 @@ export default function DemoAccessPanel({
         Recommended First Step
       </div>
 
-      <div className="mt-4 flex items-start gap-3">
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-start">
         <div className={`${styles.iconWrap} shrink-0`}>
           <Sparkles className="h-5 w-5" />
         </div>
         <div className="min-w-0">
-          <h3 className="text-xl font-bold text-slate-900">{title}</h3>
+          <h3 className="text-lg font-bold text-slate-900 sm:text-xl">{title}</h3>
           <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-600">
             {description}
           </p>
-          <p className="mt-3 flex items-center gap-2 text-sm font-semibold text-orange-700">
-            <ArrowRight className="h-4 w-4" />
+          <p className="mt-3 flex items-start gap-2 text-sm font-semibold text-orange-700 sm:items-center">
+            <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 sm:mt-0" />
             Skip forms and open a realistic seeded workspace in one click.
           </p>
         </div>
@@ -133,7 +133,7 @@ export default function DemoAccessPanel({
       </div>
 
       {activeAccount && (
-        <div className="mt-5 rounded-2xl border border-red-200 bg-red-50 px-4 py-4 text-red-900 shadow-sm">
+        <div className="mt-5 rounded-xl border border-red-200 bg-red-50 px-3 py-3 text-red-900 shadow-sm sm:rounded-2xl sm:px-4 sm:py-4">
           <div className="flex items-start gap-3">
             <div className="rounded-xl bg-white p-2 text-red-600 shadow-sm">
               <Loader2 className="h-5 w-5 animate-spin" />
@@ -162,9 +162,9 @@ export default function DemoAccessPanel({
               disabled={Boolean(loadingRole)}
               className={styles.button}
             >
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div className="min-w-0 flex-1">
-                  <div className="text-base font-semibold text-slate-900">
+                  <div className="text-sm font-semibold text-slate-900 sm:text-base">
                     Demo as {account.label}
                   </div>
                   <div className="mt-1 text-sm leading-6 text-slate-600">
@@ -176,7 +176,7 @@ export default function DemoAccessPanel({
                     {account.email}
                   </div>
                 </div>
-                <div className="self-start rounded-xl bg-red-100 p-2.5 text-red-600 shadow-sm shrink-0">
+                <div className="shrink-0 self-start rounded-xl bg-red-100 p-2.5 text-red-600 shadow-sm">
                   {isLoading ? (
                     <Loader2 className="h-5 w-5 animate-spin" />
                   ) : (
