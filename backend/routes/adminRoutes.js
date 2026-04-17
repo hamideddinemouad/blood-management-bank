@@ -1,0 +1,17 @@
+import express from "express";
+import { protect, authorizeRoles } from "../middlewares/authMiddleware.js";
+import { getAllFacilities, approveFacility, rejectFacility, getDashboardStats, getAllDonors, updateDonorEligibility, updateDonorAccountStatus, updateFacilityReviewStatus, updateFacilityAccountStatus, getAllDonationRecords, getAllCampRecords } from "../controllers/adminController.js";
+const router = express.Router();
+router.use(protect, authorizeRoles("admin", "superadmin"));
+router.get("/facilities", getAllFacilities);
+router.put("/facility/approve/:id", approveFacility);
+router.put("/facility/reject/:id", rejectFacility);
+router.get("/dashboard", getDashboardStats);
+router.get("/donors", getAllDonors);
+router.get("/donations", getAllDonationRecords);
+router.get("/camps", getAllCampRecords);
+router.patch("/donors/:id/eligibility", updateDonorEligibility);
+router.patch("/donors/:id/account-status", updateDonorAccountStatus);
+router.patch("/facilities/:id/review-status", updateFacilityReviewStatus);
+router.patch("/facilities/:id/account-status", updateFacilityAccountStatus);
+export default router;

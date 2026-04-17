@@ -1,0 +1,11 @@
+import express from "express";
+import { register, login, getProfile, demoAccess, logout } from "../controllers/authContoller.js";
+import { protect } from "../middlewares/authMiddleware.js";
+import { limitAuthAttempts } from "../middlewares/securityMiddleware.js";
+const router = express.Router();
+router.post("/register", register);
+router.post("/login", limitAuthAttempts, login);
+router.post("/demo-access", demoAccess);
+router.post("/logout", logout);
+router.get("/profile", protect, getProfile);
+export default router;
