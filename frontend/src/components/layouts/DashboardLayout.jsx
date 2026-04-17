@@ -608,15 +608,25 @@ const DashboardLayout = ({ userRole = "donor" }) => {
       {/* Mobile Footer Navigation (omitted for brevity) */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-red-100 shadow-lg z-20">
         <div className="flex justify-around items-center p-2">
-          {config.items.slice(0, 4).map((item) => {
+          {[...config.items.slice(0, 4), { path: "__logout__", label: "Logout", icon: LogOut }].map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
             return (
               <button
                 key={item.path}
-                onClick={() => navigate(item.path)}
+                onClick={() => {
+                  if (item.path === "__logout__") {
+                    handleLogout();
+                    return;
+                  }
+                  navigate(item.path);
+                }}
                 className={`flex flex-col items-center p-2 rounded-lg transition-all duration-200 flex-1 mx-1 ${
-                  isActive ? "bg-red-50 text-red-600" : "text-gray-600"
+                  item.path === "__logout__"
+                    ? "text-red-600 hover:bg-red-50"
+                    : isActive
+                      ? "bg-red-50 text-red-600"
+                      : "text-gray-600"
                 }`}
               >
                 <Icon size={20} />
