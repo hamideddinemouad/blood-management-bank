@@ -3,8 +3,16 @@ import { buildApiUrl } from "../config/app";
 
 const AUTH_CHANGE_EVENT = "bbms-auth-changed";
 const AUTH_SNAPSHOT_KEY = "bbms-auth-snapshot";
+const DEMO_EMAIL_DOMAINS = ["@bbmsmaroc.com", "@bbmsdemo.com"];
 
 const isBrowser = () => typeof window !== "undefined";
+
+export const isDemoEmail = (email = "") => {
+  const normalizedEmail = email.trim().toLowerCase();
+  return DEMO_EMAIL_DOMAINS.some((domain) =>
+    normalizedEmail.endsWith(domain),
+  );
+};
 
 export const getCachedAuthSnapshot = () => {
   if (!isBrowser()) {
