@@ -89,4 +89,4 @@ export const getCookieSameSite = () =>
   getOptionalEnv("COOKIE_SAME_SITE", isProduction() ? "none" : "lax");
 
 export const isSwaggerEnabled = () =>
-  !isProduction() || getOptionalEnv("ENABLE_SWAGGER") === "true";
+  getOptionalEnv("ENABLE_SWAGGER", "true") !== "false";
