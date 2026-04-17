@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { buildApiUrl } from "../../config/app";
 import {
   Building2,
   MapPin,
@@ -36,7 +37,7 @@ const HospitalDashboard = () => {
         console.log("Token being sent:", token);
 
         // Fetch hospital profile
-        const apiUrl = `${import.meta.env.VITE_API_URL || ""}/api/facility/profile`;
+        const apiUrl = buildApiUrl("/api/facility/profile");
         const profileRes = await fetch(apiUrl, {
           headers: { Authorization: `Bearer ${token}` },
         });

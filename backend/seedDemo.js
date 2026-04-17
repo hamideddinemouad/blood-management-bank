@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
+import { getMongoUri } from "./config/env.js";
 import { fileURLToPath } from "url";
 import Admin from "./models/adminModel.js";
 import Donor from "./models/donorModel.js";
@@ -7,7 +7,6 @@ import Facility from "./models/facilityModel.js";
 import Blood from "./models/bloodModel.js";
 import BloodRequest from "./models/bloodRequestModel.js";
 import BloodCamp from "./models/bloodCampModel.js";
-dotenv.config();
 export const DEMO_ACCOUNTS = {
   admin: {
     name: "Demo Admin BBMS Maroc",
@@ -352,7 +351,7 @@ export const connectDB = async () => {
   if (mongoose.connection.readyState === 1) {
     return mongoose.connection;
   }
-  await mongoose.connect(process.env.MONGO_URI);
+  await mongoose.connect(getMongoUri());
   console.log("MongoDB connected for demo seed");
   return mongoose.connection;
 };

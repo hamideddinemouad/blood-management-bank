@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { buildApiUrl } from "../../config/app";
 import {
   Calendar,
   Clock,
@@ -62,7 +63,7 @@ const BloodCamps = () => {
 
   const token = localStorage.getItem("token");
   // Fixed API URL - removed /blood-lab if it doesn't exist
-  const API_URL = `${import.meta.env.VITE_API_URL || ""}/api/blood-lab`;
+  const API_URL = buildApiUrl("/api/blood-lab");
 
   console.log("🔧 BloodCamps Component State:", {
     campsCount: camps.length,

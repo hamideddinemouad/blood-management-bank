@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { buildApiUrl } from "../../config/app";
 import DemoAccessPanel from "../../components/DemoAccessPanel";
 import { cacheAuthSnapshot } from "../../utils/auth";
 
@@ -28,7 +29,7 @@ export default function Login() {
     }
 
     try {
-      const apiUrl = `${import.meta.env.VITE_API_URL || ""}/api/auth/login`;
+      const apiUrl = buildApiUrl("/api/auth/login");
       const res = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

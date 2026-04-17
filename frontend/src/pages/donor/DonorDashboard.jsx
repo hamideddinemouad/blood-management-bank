@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { buildApiUrl } from "../../config/app";
 import {
   Droplet,
   Calendar,
@@ -25,7 +26,7 @@ import {
 } from "lucide-react";
 import { toast } from "react-hot-toast";
 
-const API_URL = `${import.meta.env.VITE_API_URL || ""}/api/donor`;
+const API_URL = buildApiUrl("/api/donor");
 
 const DonorDashboard = () => {
   const navigate = useNavigate();

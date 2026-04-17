@@ -1,3 +1,5 @@
+import { getCookieSameSite, isProduction } from "../config/env.js";
+
 const AUTH_COOKIE_NAME = "bbms_auth";
 const COOKIE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 
@@ -22,8 +24,8 @@ const parseCookies = (cookieHeader = "") => {
 
 const getCookieOptions = () => ({
   httpOnly: true,
-  sameSite: process.env.COOKIE_SAME_SITE || "lax",
-  secure: process.env.NODE_ENV === "production",
+  sameSite: getCookieSameSite(),
+  secure: isProduction(),
   maxAge: COOKIE_MAX_AGE_MS,
   path: "/",
 });

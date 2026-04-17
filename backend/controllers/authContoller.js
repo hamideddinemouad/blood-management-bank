@@ -4,6 +4,7 @@ import Facility from "../models/facilityModel.js";
 import Admin from "../models/adminModel.js";
 import DemoSeedState from "../models/demoSeedStateModel.js";
 import jwt from "jsonwebtoken";
+import { getJwtSecret } from "../config/env.js";
 import { DEMO_LOGIN_ACCOUNTS, seedDemoData } from "../seedDemo.js";
 import { clearAuthCookie, setAuthCookie } from "../utils/authCookie.js";
 const DEMO_SEED_STATE_KEY = "demo-seed";
@@ -56,7 +57,7 @@ const getRedirectForRole = role => {
 const generateAuthToken = user => jwt.sign({
   id: user._id,
   role: user.role
-}, process.env.JWT_SECRET, {
+}, getJwtSecret(), {
   expiresIn: "7d"
 });
 const completeSuccessfulLogin = async (user, message = "Login successful") => {

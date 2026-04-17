@@ -1,11 +1,12 @@
 import jwt from "jsonwebtoken";
+import { getJwtSecret } from "../config/env.js";
 import Admin from "../models/adminModel.js";
 export const protectAdmin = async (req, res, next) => {
   let token;
   if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
     try {
       token = req.headers.authorization.split(" ")[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, getJwtSecret());
       if (decoded.role !== "admin") {
         return res.status(403).json({
           message: "Not an admin"

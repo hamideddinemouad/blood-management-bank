@@ -2,16 +2,10 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/UserModel.js";
-import dotenv from "dotenv";
+import { getJwtSecret } from "../config/env.js";
 import { isValidMoroccanPhone, normalizeMoroccanPhone } from "../utils/moroccanPhone.js";
-dotenv.config();
 const router = express.Router();
-const JWT_SECRET = process.env.JWT_SECRET;
 const ALLOWED_ROLES = ["donor", "hospital", "admin"];
-if (!JWT_SECRET) {
-  console.error("FATAL: JWT_SECRET is not configured in environment variables");
-  process.exit(1);
-}
 const validateRegistration = (req, res, next) => {
   const {
     name,
@@ -78,7 +72,7 @@ const createToken = user => {
     id: user._id,
     role: user.role,
     email: user.email
-  }, JWT_SECRET, {
+  }, getJwtSecret(), {
     expiresIn: "7d"
   });
 };

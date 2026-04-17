@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { websiteName } from "../config/app";
 import { clearCachedAuthSnapshot, fetchCurrentUser, getCachedAuthSnapshot } from "../utils/auth";
 
-const WEBSITE_NAME = import.meta.env.VITE_WEBSITE_NAME;
+const WEBSITE_NAME = websiteName;
 const AUTH_CHANGE_EVENT = "bbms-auth-changed";
 
 const roleConfig = {

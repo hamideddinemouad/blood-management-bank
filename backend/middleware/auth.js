@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
+import { getJwtSecret } from "../config/env.js";
 import User from "../models/UserModel.js";
-const JWT_SECRET = process.env.JWT_SECRET;
 export const authenticate = async (req, res, next) => {
   try {
     const token = req.header('Authorization')?.replace('Bearer ', '');
@@ -10,7 +10,7 @@ export const authenticate = async (req, res, next) => {
         message: "Access denied. No token provided."
       });
     }
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, getJwtSecret());
     const user = await User.findById(decoded.id).select('-password');
     if (!user) {
       return res.status(401).json({

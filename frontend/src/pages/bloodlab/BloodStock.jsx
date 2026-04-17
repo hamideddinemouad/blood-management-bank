@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { buildApiUrl } from "../../config/app";
 import {
   Droplets,
   PlusCircle,
@@ -22,7 +23,7 @@ const BloodStock = () => {
   });
 
   const token = localStorage.getItem("token");
-  const API_URL = `${import.meta.env.VITE_API_URL || ""}/api/blood-lab`;
+  const API_URL = buildApiUrl("/api/blood-lab");
 
   // Blood types for dropdown
   const bloodTypes = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];

@@ -1,5 +1,6 @@
 import Facility from "../models/facilityModel.js";
 import bcrypt from "bcryptjs";
+import { getNodeEnv } from "../config/env.js";
 import { normalizeMoroccanPhone } from "../utils/moroccanPhone.js";
 export const getProfile = async (req, res) => {
   try {
@@ -106,7 +107,7 @@ export const updateProfile = async (req, res) => {
       success: false,
       message: errorMessage,
       errors: validationErrors,
-      detail: process.env.NODE_ENV === 'development' ? error.message : undefined
+      detail: getNodeEnv() === 'development' ? error.message : undefined
     });
   }
 };

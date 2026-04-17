@@ -77,13 +77,16 @@ cd backend
 npm install
 ```
 
-Create `backend/.env`:
+Create `backend/.env` from `backend/.env.example`:
 
 ```bash
 MONGO_URI=mongodb://127.0.0.1:27017/bbms
 JWT_SECRET=replace_with_a_real_secret
+COOKIE_SAME_SITE=lax
 PORT=5000
+NODE_ENV=development
 ENABLE_SWAGGER=true
+CORS_ORIGINS=http://localhost,http://localhost:5173,http://localhost:5174
 ```
 
 Start the backend:
@@ -112,11 +115,14 @@ Frontend will run on the Vite dev server, typically:
 http://localhost:5173
 ```
 
-If needed, add a frontend `.env` value:
+If needed, create `frontend/.env` from `frontend/.env.example`:
 
 ```bash
 VITE_API_URL=http://localhost:5000
+VITE_WEBSITE_NAME=BBMS
 ```
+
+Frontend environment values are now read through a shared config helper so API and branding config live in one place instead of being repeated across pages and components.
 
 ## Docker Setup
 
