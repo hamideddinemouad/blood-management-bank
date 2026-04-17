@@ -16,6 +16,7 @@ import {
   Clock,
 } from "lucide-react";
 import { toast } from "react-hot-toast";
+import { buildApiUrl } from "../../config/app";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);
@@ -27,9 +28,10 @@ const AdminDashboard = () => {
       if (showToast) setRefreshing(true);
 
       const token = localStorage.getItem("token");
+      const apiUrl = buildApiUrl("/api/admin/dashboard");
       console.log("🔄 Fetching admin dashboard stats...");
       
-      const res = await fetch("/api/admin/dashboard", {
+      const res = await fetch(apiUrl, {
         headers: { 
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
