@@ -483,11 +483,11 @@ function GetAllDonors() {
                 {/* Header with Name and Badges */}
                 <div className="mb-4 border-b border-gray-100 pb-4">
                   <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0 flex-1">
-                      <h3 className="line-clamp-1 text-lg font-bold text-gray-800 transition-colors group-hover:text-red-600">
+                    <div className="min-w-0 flex-1 space-y-2">
+                      <h3 className="text-lg font-bold leading-snug text-gray-800 break-words transition-colors group-hover:text-red-600">
                         {donor.fullName}
                       </h3>
-                      <p className="mt-2 rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-600 break-all">
+                      <p className="rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-600 break-all">
                         {donor.email || "No email provided"}
                       </p>
                     </div>
@@ -501,9 +501,9 @@ function GetAllDonors() {
                 {/* Donor Details */}
                 <div className="space-y-3">
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    <div className="flex items-center gap-3 rounded-2xl bg-red-50/60 px-3 py-2 text-sm">
-                      <Phone className="h-4 w-4 flex-shrink-0 text-red-500" />
-                      <span className="truncate text-gray-700">
+                    <div className="flex items-start gap-3 rounded-2xl bg-red-50/60 px-3 py-2 text-sm">
+                      <Phone className="mt-0.5 h-4 w-4 flex-shrink-0 text-red-500" />
+                      <span className="break-words leading-6 text-gray-700">
                         {donor.phone || "Not provided"}
                       </span>
                     </div>
@@ -545,7 +545,7 @@ function GetAllDonors() {
                   {/* Address */}
                   <div className="flex items-start gap-3 rounded-2xl border border-gray-100 bg-gray-50/80 px-3 py-3 text-sm">
                     <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-red-500" />
-                    <div className="line-clamp-2 text-gray-700">
+                    <div className="break-words leading-6 text-gray-700">
                       {donor.address?.street && `${donor.address.street}, `}
                       {donor.address?.city || "City not provided"}
                       {donor.address?.state ? `, ${donor.address.state}` : ""}

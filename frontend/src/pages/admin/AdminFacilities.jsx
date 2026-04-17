@@ -445,8 +445,8 @@ const FacilityApproval = () => {
                   <div className="mb-4 border-b border-gray-100 pb-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0 flex-1">
-                        <div className="mb-2 flex flex-wrap items-center gap-3">
-                          <h3 className="line-clamp-1 text-lg font-semibold text-gray-900">
+                        <div className="mb-2 flex flex-wrap items-start gap-3">
+                          <h3 className="text-lg font-semibold leading-snug text-gray-900 break-words">
                             {facility.name}
                           </h3>
                           {getFacilityTypeBadge(facility.facilityType)}
@@ -476,7 +476,7 @@ const FacilityApproval = () => {
                   <div className="space-y-3 text-sm text-gray-600">
                     <div className="flex items-start gap-3 rounded-2xl bg-red-50/60 px-3 py-3">
                       <MapPin size={14} className="mt-0.5 flex-shrink-0" />
-                      <span className="line-clamp-2">
+                      <span className="break-words leading-6 text-gray-700">
                         {facility.address?.street || "Address not provided"}
                         {facility.address?.city ? `, ${facility.address.city}` : ""}
                         {facility.address?.state ? `, ${facility.address.state}` : ""}
@@ -485,9 +485,9 @@ const FacilityApproval = () => {
                     </div>
 
                     <div className="grid gap-3 sm:grid-cols-2">
-                      <p className="flex items-center gap-2 rounded-2xl bg-red-50/60 px-3 py-2">
-                        <FileText size={14} />
-                        <span className="truncate">
+                      <p className="flex items-start gap-2 rounded-2xl bg-red-50/60 px-3 py-2">
+                        <FileText size={14} className="mt-0.5 shrink-0" />
+                        <span className="break-all leading-6 text-gray-700">
                           {facility.registrationNumber || "No registration"}
                         </span>
                       </p>
