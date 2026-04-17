@@ -2,6 +2,8 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { buildApiUrl } from "../../config/app";
 import DemoAccessPanel from "../../components/DemoAccessPanel";
 import {
@@ -361,8 +363,43 @@ export default function FacilityRegisterForm() {
   const progressPercentage = (step / 3) * 100;
 
   return (
-    <div className="min-h-screen bg-red-50 flex items-center justify-center py-8 px-4">
-      <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(249,115,22,0.12),_transparent_28%),linear-gradient(180deg,#fff7ed_0%,#fef2f2_100%)] flex items-center justify-center py-8 px-4">
+      <div className="w-full max-w-4xl space-y-6">
+        <div className="rounded-[2rem] border border-orange-200 bg-white/90 p-6 shadow-[0_30px_90px_-45px_rgba(249,115,22,0.65)]">
+          <div className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-orange-700">
+            <Sparkles className="h-4 w-4" />
+            Best First Click
+          </div>
+          <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <h1 className="text-3xl font-black tracking-tight text-slate-900">
+                Need to understand the product fast? Use demo access before registering.
+              </h1>
+              <p className="mt-3 text-base leading-7 text-slate-600">
+                Most reviewers, recruiters, and testers should open the seeded
+                product experience first. The live demo shows facility flows
+                immediately, without waiting on approval.
+              </p>
+            </div>
+            <Link
+              to="/fast-test"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-orange-500 px-6 py-4 text-base font-semibold text-white shadow-[0_20px_45px_-20px_rgba(249,115,22,0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-orange-400"
+            >
+              Launch Fast Test
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="mt-5">
+            <DemoAccessPanel
+              title="Jump into a ready-made workspace"
+              description="Preview donor, hospital, admin, or blood lab flows instantly. Use registration only when you intentionally want to create a real facility account."
+              variant="priority"
+            />
+          </div>
+        </div>
+
+      <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg overflow-hidden mx-auto">
         {/* Header Section */}
         <div className="bg-red-700 text-white p-6">
           <h1 className="text-2xl font-bold text-center mb-2">
@@ -398,11 +435,9 @@ export default function FacilityRegisterForm() {
 
         {/* Form Section */}
         <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6">
-          <DemoAccessPanel
-            title="Demo shortcut"
-            description="Need a quick product preview? Jump into the demo roles instantly with auto-refreshed sample data."
-            variant="compact"
-          />
+          <div className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-4 text-sm text-orange-800">
+            Demo access is the faster path for most visitors. Continue with this form only if you want to register a real facility account.
+          </div>
 
           {/* Step 1: Basic Information */}
           {step === 1 && (
@@ -896,6 +931,7 @@ export default function FacilityRegisterForm() {
             )}
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

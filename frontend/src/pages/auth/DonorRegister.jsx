@@ -2,6 +2,8 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { buildApiUrl } from "../../config/app";
 import DemoAccessPanel from "../../components/DemoAccessPanel";
 import {
@@ -340,8 +342,43 @@ export default function DonorRegisterForm() {
   const progressPercentage = (step / 3) * 100;
 
   return (
-    <div className="min-h-screen bg-red-50 flex items-center justify-center py-8 px-4 outline-0">
-      <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(249,115,22,0.12),_transparent_28%),linear-gradient(180deg,#fff7ed_0%,#fef2f2_100%)] flex items-center justify-center py-8 px-4 outline-0">
+      <div className="w-full max-w-4xl space-y-6">
+        <div className="rounded-[2rem] border border-orange-200 bg-white/90 p-6 shadow-[0_30px_90px_-45px_rgba(249,115,22,0.65)]">
+          <div className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-orange-700">
+            <Sparkles className="h-4 w-4" />
+            Try Demo First
+          </div>
+          <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <h1 className="text-3xl font-black tracking-tight text-slate-900">
+                Want to see the product now instead of filling this form?
+              </h1>
+              <p className="mt-3 text-base leading-7 text-slate-600">
+                Fast Test is the better first click for most visitors. Explore a
+                seeded donor, hospital, admin, or blood lab experience before
+                creating a real account.
+              </p>
+            </div>
+            <Link
+              to="/fast-test"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-orange-500 px-6 py-4 text-base font-semibold text-white shadow-[0_20px_45px_-20px_rgba(249,115,22,0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-orange-400"
+            >
+              Open Fast Test
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="mt-5">
+            <DemoAccessPanel
+              title="Preview the donor journey instantly"
+              description="Skip registration for now and enter a ready-made BBMS workspace with realistic data already loaded."
+              variant="priority"
+            />
+          </div>
+        </div>
+
+        <div className="w-full bg-white rounded-xl shadow-lg overflow-hidden">
         {/* Header Section */}
         <div className="bg-red-700 text-white p-6">
           <h1 className="text-2xl font-bold text-center mb-2">
@@ -377,11 +414,9 @@ export default function DonorRegisterForm() {
 
         {/* Form Section */}
         <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6">
-          <DemoAccessPanel
-            title="Demo shortcut"
-            description="Use the demo roles instead of filling the full registration flow. Sample data refreshes automatically when stale."
-            variant="compact"
-          />
+          <div className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-4 text-sm text-orange-800">
+            Fastest way to explore the product: use the demo access above. Complete this form only if you specifically want to create a donor account.
+          </div>
 
           {/* Step 1: Personal Information */}
           {step === 1 && (
@@ -889,6 +924,7 @@ export default function DonorRegisterForm() {
             )}
           </div>
         </form>
+      </div>
       </div>
     </div>
   );
