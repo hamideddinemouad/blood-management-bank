@@ -11,13 +11,13 @@ export const DEMO_ACCOUNTS = {
   admin: {
     name: "Demo Admin BBMS Maroc",
     email: "demo.admin@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "demo.admin@bbmsmaroc.com",
     role: "admin"
   },
   donorPrimary: {
     fullName: "Youssef El Idrissi",
     email: "demo.donor@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "demo.donor@bbmsmaroc.com",
     phone: "0612345678",
     emergencyContact: "0678123456",
     age: 29,
@@ -35,7 +35,7 @@ export const DEMO_ACCOUNTS = {
   donorSecondary: {
     fullName: "Salma Bennani",
     email: "community.donor@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "community.donor@bbmsmaroc.com",
     phone: "0623456789",
     emergencyContact: "0681234567",
     age: 34,
@@ -53,7 +53,7 @@ export const DEMO_ACCOUNTS = {
   donorTertiary: {
     fullName: "Imane Alaoui",
     email: "imane.alaoui@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "imane.alaoui@bbmsmaroc.com",
     phone: "0634112233",
     emergencyContact: "0689112233",
     age: 26,
@@ -71,7 +71,7 @@ export const DEMO_ACCOUNTS = {
   donorQuaternary: {
     fullName: "Hamza Amrani",
     email: "hamza.amrani@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "hamza.amrani@bbmsmaroc.com",
     phone: "0645223344",
     emergencyContact: "0699223344",
     age: 38,
@@ -89,7 +89,7 @@ export const DEMO_ACCOUNTS = {
   donorQuinary: {
     fullName: "Khadija Tazi",
     email: "khadija.tazi@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "khadija.tazi@bbmsmaroc.com",
     phone: "0656334455",
     emergencyContact: "0687334455",
     age: 31,
@@ -107,7 +107,7 @@ export const DEMO_ACCOUNTS = {
   hospital: {
     name: "Clinique Al Amal",
     email: "demo.hospital@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "demo.hospital@bbmsmaroc.com",
     phone: "0654321098",
     emergencyContact: "0665432109",
     address: {
@@ -136,7 +136,7 @@ export const DEMO_ACCOUNTS = {
   bloodLab: {
     name: "Laboratoire Atlas Sang",
     email: "demo.lab@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "demo.lab@bbmsmaroc.com",
     phone: "0676543210",
     emergencyContact: "0698765432",
     address: {
@@ -165,7 +165,7 @@ export const DEMO_ACCOUNTS = {
   pendingHospital: {
     name: "Hopital Al Farah",
     email: "pending.hospital@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "pending.hospital@bbmsmaroc.com",
     phone: "0619988776",
     emergencyContact: "0629988776",
     address: {
@@ -187,7 +187,7 @@ export const DEMO_ACCOUNTS = {
   rejectedLab: {
     name: "Laboratoire Chifaa",
     email: "rejected.lab@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "rejected.lab@bbmsmaroc.com",
     phone: "0634567890",
     emergencyContact: "0645678901",
     address: {
@@ -209,7 +209,7 @@ export const DEMO_ACCOUNTS = {
   approvedHospitalSecondary: {
     name: "Hopital Ibn Rochd",
     email: "ibnrochd.hospital@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "ibnrochd.hospital@bbmsmaroc.com",
     phone: "0667445566",
     emergencyContact: "0688445566",
     address: {
@@ -238,7 +238,7 @@ export const DEMO_ACCOUNTS = {
   approvedLabSecondary: {
     name: "Centre Regional de Transfusion Rabat",
     email: "crt.rabat@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "crt.rabat@bbmsmaroc.com",
     phone: "0678556677",
     emergencyContact: "0689556677",
     address: {
@@ -267,7 +267,7 @@ export const DEMO_ACCOUNTS = {
   pendingLab: {
     name: "Laboratoire Al Massira",
     email: "pending.lab@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "pending.lab@bbmsmaroc.com",
     phone: "0689667788",
     emergencyContact: "0699667788",
     address: {
@@ -289,7 +289,7 @@ export const DEMO_ACCOUNTS = {
   rejectedHospital: {
     name: "Clinique Anoual",
     email: "rejected.hospital@bbmsmaroc.com",
-    password: "DemoPass123!",
+    password: "rejected.hospital@bbmsmaroc.com",
     phone: "0698778899",
     emergencyContact: "0688778899",
     address: {
@@ -309,6 +309,7 @@ export const DEMO_ACCOUNTS = {
     }
   }
 };
+
 export const DEMO_LOGIN_ACCOUNTS = {
   admin: {
     email: DEMO_ACCOUNTS.admin.email,
