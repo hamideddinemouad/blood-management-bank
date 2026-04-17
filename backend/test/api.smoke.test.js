@@ -179,6 +179,10 @@ test("public and auth endpoints respond", async () => {
   const root = await request(app).get("/");
   assert.equal(root.status, 302);
   assert.equal(root.headers.location, "/api/doc");
+  const docsPage = await request(app).get("/api/doc");
+  assert.equal(docsPage.status, 200);
+  assert.match(docsPage.text, /SwaggerUIBundle/);
+  assert.match(docsPage.text, /\/api\/doc\.json/);
   const landingStats = await request(app).get("/api/public/landing-stats");
   assert.equal(landingStats.status, 200);
   assert.equal(landingStats.body.success, true);
