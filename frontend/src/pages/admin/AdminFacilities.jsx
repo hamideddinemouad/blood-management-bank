@@ -16,6 +16,7 @@ import {
   RefreshCw,
   AlertCircle,
 } from "lucide-react";
+import MobileShieldLoader from "../../components/MobileShieldLoader";
 
 const FacilityApproval = () => {
   const [facilities, setFacilities] = useState([]);
@@ -325,38 +326,44 @@ const FacilityApproval = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-white p-4 sm:p-6 page-enter">
-        <div className="max-w-7xl mx-auto space-y-6">
-          <div className="rounded-3xl border border-red-100 bg-white p-6 shadow-sm">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-              <div className="space-y-2">
+      <>
+        <MobileShieldLoader
+          title="Loading Facility Verification"
+          message="Preparing pending facility requests..."
+        />
+        <div className="hidden sm:block min-h-screen bg-gradient-to-br from-red-50 to-white p-4 sm:p-6 page-enter">
+          <div className="max-w-7xl mx-auto space-y-6">
+            <div className="rounded-3xl border border-red-100 bg-white p-6 shadow-sm">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-4">
+                    <div className="skeleton-block h-12 w-12 rounded-2xl" />
+                    <div className="space-y-2">
+                      <div className="skeleton-block h-7 w-56 rounded-lg" />
+                      <div className="skeleton-block h-4 w-96 max-w-full rounded-lg" />
+                    </div>
+                  </div>
+                </div>
+                <div className="skeleton-block h-11 w-28 rounded-xl" />
+              </div>
+              <div className="mt-6 rounded-3xl border border-red-100 p-5">
                 <div className="flex items-center gap-4">
                   <div className="skeleton-block h-12 w-12 rounded-2xl" />
                   <div className="space-y-2">
-                    <div className="skeleton-block h-7 w-56 rounded-lg" />
-                    <div className="skeleton-block h-4 w-96 max-w-full rounded-lg" />
+                    <div className="skeleton-block h-5 w-56 rounded-lg" />
+                    <div className="skeleton-block h-4 w-80 max-w-full rounded-lg" />
                   </div>
                 </div>
               </div>
-              <div className="skeleton-block h-11 w-28 rounded-xl" />
             </div>
-            <div className="mt-6 rounded-3xl border border-red-100 p-5">
-              <div className="flex items-center gap-4">
-                <div className="skeleton-block h-12 w-12 rounded-2xl" />
-                <div className="space-y-2">
-                  <div className="skeleton-block h-5 w-56 rounded-lg" />
-                  <div className="skeleton-block h-4 w-80 max-w-full rounded-lg" />
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-            {renderListSkeleton()}
-            {renderDetailsSkeleton()}
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              {renderListSkeleton()}
+              {renderDetailsSkeleton()}
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 

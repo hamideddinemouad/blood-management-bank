@@ -29,6 +29,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { buildApiUrl } from "../../config/app";
+import MobileShieldLoader from "../MobileShieldLoader";
 import {
   clearCachedAuthSnapshot,
   fetchCurrentUser,
@@ -291,14 +292,20 @@ const DashboardLayout = ({ userRole = "donor" }) => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="flex flex-col items-center">
-          <Loader2 className="w-8 h-8 animate-spin text-red-600" />
-          <p className="mt-4 text-gray-600 font-semibold">
-            Loading Dashboard...
-          </p>
+      <>
+        <MobileShieldLoader
+          title={`Loading ${config.shortTitle} Dashboard`}
+          message="Preparing your workspace..."
+        />
+        <div className="hidden sm:flex min-h-screen items-center justify-center bg-gray-50">
+          <div className="flex flex-col items-center">
+            <Loader2 className="w-8 h-8 animate-spin text-red-600" />
+            <p className="mt-4 text-gray-600 font-semibold">
+              Loading Dashboard...
+            </p>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 

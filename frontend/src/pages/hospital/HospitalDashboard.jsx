@@ -16,6 +16,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import axios from "axios";
+import MobileShieldLoader from "../../components/MobileShieldLoader";
 
 const HospitalDashboard = () => {
   const [hospital, setHospital] = useState(null);
@@ -205,16 +206,22 @@ const HospitalDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-white p-4 sm:p-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-center items-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
-            <span className="ml-3 text-gray-600">
-              Loading hospital dashboard...
-            </span>
+      <>
+        <MobileShieldLoader
+          title="Loading Hospital Dashboard"
+          message="Preparing your hospital overview..."
+        />
+        <div className="hidden sm:block min-h-screen bg-gradient-to-br from-red-50 to-white p-4 sm:p-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+              <span className="ml-3 text-gray-600">
+                Loading hospital dashboard...
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 

@@ -25,6 +25,7 @@ import {
   Bell,
 } from "lucide-react";
 import { toast } from "react-hot-toast";
+import MobileShieldLoader from "../../components/MobileShieldLoader";
 
 const API_URL = buildApiUrl("/api/donor");
 
@@ -232,17 +233,23 @@ Thank you for supporting the donor community and helping save lives.
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-pulse mb-4">
-            <Heart className="w-12 h-12 text-red-500 mx-auto" />
+      <>
+        <MobileShieldLoader
+          title="Loading Donor Dashboard"
+          message="Preparing your donation journey..."
+        />
+        <div className="hidden sm:flex min-h-screen bg-gradient-to-br from-red-50 to-white items-center justify-center">
+          <div className="text-center">
+            <div className="animate-pulse mb-4">
+              <Heart className="w-12 h-12 text-red-500 mx-auto" />
+            </div>
+            <h2 className="text-xl font-semibold text-gray-700 mb-2">
+              Loading Donor Dashboard
+            </h2>
+            <p className="text-gray-500">Preparing your donation journey...</p>
           </div>
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            Loading Donor Dashboard
-          </h2>
-          <p className="text-gray-500">Preparing your donation journey...</p>
         </div>
-      </div>
+      </>
     );
   }
 
