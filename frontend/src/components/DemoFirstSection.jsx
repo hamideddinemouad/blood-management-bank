@@ -4,15 +4,15 @@ import DemoAccessPanel from "./DemoAccessPanel";
 
 export default function DemoFirstSection({
   badge = "Try Demo First",
-  title = "Want to see the product now instead of filling this form?",
-  description = "Fast Test is the better first click for most visitors. Explore a seeded donor, hospital, admin, or blood lab experience before creating a real account.",
+  title = "Want a quick preview instead of the form?",
+  description = "Open a seeded donor, hospital, admin, or blood lab experience first.",
   ctaLabel = "Open Fast Test",
   ctaTo = "/fast-test",
   showCta = true,
   className = "",
   ctaClassName = "",
-  panelTitle = "Preview the donor journey instantly",
-  panelDescription = "Skip registration for now and enter a ready-made BBMS workspace with realistic data already loaded.",
+  panelTitle = "Preview it now",
+  panelDescription = "Open a ready-made BBMS workspace with realistic data loaded.",
 }) {
   return (
     <div

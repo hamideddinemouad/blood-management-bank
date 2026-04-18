@@ -97,10 +97,10 @@ export default function Login() {
 
         <section className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-xl">
           <h2 className="text-2xl font-bold text-center text-gray-900 mb-4">
-            Manual Login
+            Login
           </h2>
           <p className="text-center text-gray-500 mb-6">
-            Access your donor, hospital, or lab dashboard if you already have credentials.
+            Use your credentials to continue.
           </p>
 
           {error && (
@@ -118,7 +118,7 @@ export default function Login() {
               <input
                 type="email"
                 name="email"
-                placeholder="Enter your email"
+                placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -134,7 +134,7 @@ export default function Login() {
               <input
                 type="password"
                 name="password"
-                placeholder="Enter your password"
+                placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
                 required

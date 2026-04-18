@@ -368,17 +368,15 @@ export default function FacilityRegisterForm() {
         <div className="rounded-[2rem] border border-orange-200 bg-white/90 p-6 shadow-[0_30px_90px_-45px_rgba(249,115,22,0.65)]">
           <div className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-orange-700">
             <Sparkles className="h-4 w-4" />
-            Best First Click
+            Best first step
           </div>
           <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <h1 className="text-3xl font-black tracking-tight text-slate-900">
-                Need to understand the product fast? Use demo access before registering.
+                Want a quick preview before registering?
               </h1>
               <p className="mt-3 text-base leading-7 text-slate-600">
-                Most reviewers, recruiters, and testers should open the seeded
-                product experience first. The live demo shows facility flows
-                immediately, without waiting on approval.
+                Open the demo first. It shows the product instantly.
               </p>
             </div>
             <Link
@@ -392,8 +390,8 @@ export default function FacilityRegisterForm() {
 
           <div className="mt-5">
             <DemoAccessPanel
-              title="Jump into a ready-made workspace"
-              description="Preview donor, hospital, admin, or blood lab flows instantly. Use registration only when you intentionally want to create a real facility account."
+              title="Jump into the demo"
+              description="Preview donor, hospital, admin, or blood lab flows instantly."
               variant="priority"
             />
           </div>
@@ -436,7 +434,7 @@ export default function FacilityRegisterForm() {
         {/* Form Section */}
         <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6">
           <div className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-4 text-sm text-orange-800">
-            Demo access is the faster path for most visitors. Continue with this form only if you want to register a real facility account.
+            Use the demo first. Fill this out only to create a facility account.
           </div>
 
           {/* Step 1: Basic Information */}

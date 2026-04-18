@@ -1,6 +1,6 @@
 import { ArrowRight, BriefcaseMedical, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import DemoFirstSection from "../components/DemoFirstSection";
+import DemoAccessPanel from "../components/DemoAccessPanel";
 
 export default function FastTest() {
   const roleHighlights = [
@@ -28,15 +28,37 @@ export default function FastTest() {
         <section className="mx-auto max-w-[88rem] px-3 pb-8 sm:px-6 sm:pb-12 lg:px-8 lg:pb-14">
           <div className="overflow-hidden rounded-[1.5rem] border border-red-100 bg-white/90 shadow-[0_30px_120px_-45px_rgba(127,29,29,0.45)] backdrop-blur sm:rounded-[2rem] lg:rounded-[2.25rem]">
             <div className="p-4 sm:p-8 lg:p-12">
-              <DemoFirstSection
-                badge="Try Demo First"
-                title="Want to see the product now instead of filling this form?"
-                description="Fast Test is the better first click for most visitors. Explore a seeded donor, hospital, admin, or blood lab experience before creating a real account."
-                showCta={false}
-                className="border-orange-300 bg-gradient-to-br from-orange-50 via-white to-red-50 p-4 sm:p-7 lg:p-10 shadow-[0_35px_100px_-55px_rgba(249,115,22,0.95)]"
-                panelTitle="Preview the donor journey instantly"
-                panelDescription="Skip registration for now and enter a ready-made BBMS workspace with realistic data already loaded."
-              />
+              <div className="rounded-[1.5rem] border border-orange-200 bg-gradient-to-br from-orange-50 via-white to-red-50 p-4 shadow-[0_35px_100px_-55px_rgba(249,115,22,0.95)] sm:rounded-[2rem] sm:p-7 lg:p-10">
+                <div className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-orange-700">
+                  <BriefcaseMedical className="h-4 w-4" />
+                  Try Demo First
+                </div>
+                <h1 className="mt-4 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+                  Want a quick preview instead of the form?
+                </h1>
+                <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+                  Open a seeded donor, hospital, admin, or blood lab experience first.
+                </p>
+                <div className="mt-5">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-orange-700">
+                    <BriefcaseMedical className="h-4 w-4" />
+                    Best first step
+                  </div>
+                  <h2 className="mt-4 text-xl font-bold text-slate-900 sm:text-2xl">
+                    Preview it now
+                  </h2>
+                </div>
+                <div className="mt-5">
+                  <DemoAccessPanel
+                    title="Demo Access"
+                    description="Open a seeded donor, hospital, admin, or blood lab role."
+                    variant="priority"
+                    showBadge={false}
+                    showIntro={false}
+                    showMeta={false}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -52,7 +74,7 @@ export default function FastTest() {
                   What the demo includes
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-slate-500">
-                  Preloaded role journeys with no setup friction.
+                  Preloaded role journeys with no setup.
                 </p>
               </div>
             </div>
@@ -78,7 +100,7 @@ export default function FastTest() {
               to="/login"
               className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 sm:mt-8 sm:w-auto sm:rounded-2xl sm:px-6 sm:py-3.5 sm:text-base"
             >
-              Open standard login
+              Use standard login
               <ArrowRight className="h-5 w-5 shrink-0" />
             </Link>
           </div>

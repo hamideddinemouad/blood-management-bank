@@ -212,16 +212,16 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-red-50">
+    <div className="min-h-screen bg-gradient-to-b from-white via-slate-50 to-red-50/40">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-red-700 to-red-900 text-white">
-        <div className="absolute inset-0 opacity-20"></div>
-        <div className="container mx-auto px-4 py-16 md:py-20 relative z-10">
+      <section className="relative overflow-hidden bg-gradient-to-br from-red-700 via-red-800 to-red-950 text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.28),transparent_30%),radial-gradient(circle_at_top_right,rgba(255,255,255,0.14),transparent_26%),linear-gradient(to_bottom,rgba(255,255,255,0.08),transparent_38%)]"></div>
+        <div className="container relative z-10 mx-auto px-4 py-16 md:py-20">
           <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium mb-6 backdrop-blur-sm">
               <Heart className="w-4 h-4" />
-              Saving Lives Every Day
+              Save lives faster
               </div>
 
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
@@ -229,13 +229,12 @@ const LandingPage = () => {
                 <span className="bg-gradient-to-r from-red-200 to-red-300 bg-clip-text text-transparent">
                   Blood Donors
                 </span>{" "}
-                with Those in Need
+                with people who need them
               </h1>
 
               <p className="text-lg md:text-xl text-red-100 mb-8 max-w-2xl lg:mx-0 mx-auto">
-                Our advanced blood bank management system ensures efficient
-                donation, storage, and distribution of blood products to save
-                lives when every second counts.
+                A fast, simple blood bank platform for donor matching,
+                inventory tracking, and urgent response.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -256,57 +255,56 @@ const LandingPage = () => {
 
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-red-100 lg:justify-start">
                 <div className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
-                  No registration required
+                  No signup needed
                 </div>
                 <div className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
-                  4 preloaded roles
+                  4 ready roles
                 </div>
                 <div className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
-                  Best way to preview the product
+                  Instant demo access
                 </div>
               </div>
             </div>
 
-            <div className="rounded-[2rem] border border-white/20 bg-white/10 p-6 backdrop-blur-md shadow-[0_30px_80px_-40px_rgba(15,23,42,0.7)]">
-              <div className="inline-flex items-center gap-2 rounded-full bg-orange-500/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-orange-100">
+            <div className="rounded-[2rem] border border-white/80 bg-white px-6 py-7 text-slate-900 shadow-[0_35px_90px_-45px_rgba(127,29,29,0.45)] md:px-8 md:py-9">
+              <div className="inline-flex items-center gap-2 rounded-full bg-red-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-red-700">
                 <Zap className="h-4 w-4" />
                 Start Here
               </div>
-              <h2 className="mt-5 text-2xl font-bold text-white">
-                Don&apos;t just read about the platform. Open it.
+              <h2 className="mt-6 max-w-md text-2xl font-bold text-slate-900">
+                Jump into the demo.
               </h2>
-              <p className="mt-3 text-sm leading-6 text-red-100">
-                Most visitors understand BBMS fastest by entering a ready-made
-                workspace. The Fast Test route drops you directly into realistic
-                admin, donor, hospital, and blood lab experiences.
+              <p className="mt-4 max-w-lg text-sm leading-7 text-slate-600">
+                Open a ready-made donor, hospital, admin, or lab workspace in
+                seconds.
               </p>
 
-              <div className="mt-6 grid gap-3">
-                <div className="rounded-2xl bg-white/10 px-4 py-4">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-white">
-                    <CheckCircle className="h-4 w-4 text-orange-300" />
-                    See real dashboards immediately
+              <div className="mt-8 grid gap-4">
+                <div className="rounded-2xl border border-red-100 bg-red-50 px-5 py-5">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                    <CheckCircle className="h-4 w-4 text-red-600" />
+                    Real screens, instantly
                   </div>
-                  <p className="mt-1 text-sm text-red-100">
-                    Explore seeded requests, camps, donors, and inventory
-                    without filling any forms first.
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    View dashboards, requests, donors, and inventory without
+                    creating an account.
                   </p>
                 </div>
-                <div className="rounded-2xl bg-white/10 px-4 py-4">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-white">
-                    <Shield className="h-4 w-4 text-orange-300" />
-                    Trusted preview path
+                <div className="rounded-2xl border border-slate-200 bg-white px-5 py-5">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                    <Shield className="h-4 w-4 text-red-600" />
+                    Best first click
                   </div>
-                  <p className="mt-1 text-sm text-red-100">
-                    Ideal for recruiters, testers, and first-time visitors who
-                    need the product value fast.
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    A simple way for visitors, testers, and recruiters to get
+                    the feel of the platform fast.
                   </p>
                 </div>
               </div>
 
               <Link
                 to="/fast-test"
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-5 py-4 text-base font-semibold text-red-700 transition-all duration-200 hover:bg-orange-50"
+                className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-5 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-red-500"
               >
                 Open Fast Test
                 <ArrowRight className="h-4 w-4" />
@@ -324,7 +322,7 @@ const LandingPage = () => {
           >
             <path
               d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V150H0V90.83C36.67,85.19,76.33,76,112,69.33C160.67,59.67,224.67,47.33,321.39,56.44Z"
-              className="fill-slate-50"
+              className="fill-white"
             ></path>
           </svg>
         </div>

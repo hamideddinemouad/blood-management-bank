@@ -13,8 +13,11 @@ import { loginWithDemoRole } from "../utils/demoLogin";
 
 export default function DemoAccessPanel({
   title = "Demo Access",
-  description = "Jump straight into demo role accounts. If the shared dataset is older than two hours, it refreshes automatically before login.",
+  description = "Jump into demo roles. If the data is stale, it refreshes first.",
   variant = "default",
+  showBadge = true,
+  showIntro = true,
+  showMeta = true,
 }) {
   const navigate = useNavigate();
   const [loadingRole, setLoadingRole] = useState("");
@@ -81,56 +84,64 @@ export default function DemoAccessPanel({
 
   return (
     <section className={styles.wrapper}>
-      <div className={styles.badge}>
-        <Sparkles className="h-3.5 w-3.5" />
-        Recommended First Step
-      </div>
+      {showBadge ? (
+        <div className={styles.badge}>
+          <Sparkles className="h-3.5 w-3.5" />
+          Best first step
+        </div>
+      ) : null}
 
-      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-start">
-        <div className={`${styles.iconWrap} shrink-0`}>
-          <Sparkles className="h-5 w-5" />
-        </div>
-        <div className="min-w-0">
-          <h3 className="text-lg font-bold text-slate-900 sm:text-xl">{title}</h3>
-          <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-600">
-            {description}
-          </p>
-          <p className="mt-3 flex items-start gap-2 text-sm font-semibold text-orange-700 sm:items-center">
-            <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 sm:mt-0" />
-            Skip forms and open a realistic seeded workspace in one click.
-          </p>
-        </div>
-      </div>
+      {showIntro ? (
+        <>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-start">
+            <div className={`${styles.iconWrap} shrink-0`}>
+              <Sparkles className="h-5 w-5" />
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-lg font-bold text-slate-900 sm:text-xl">{title}</h3>
+              <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-600">
+                {description}
+              </p>
+              <p className="mt-3 flex items-start gap-2 text-sm font-semibold text-orange-700 sm:items-center">
+                <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 sm:mt-0" />
+                Open a seeded workspace in one click.
+              </p>
+            </div>
+          </div>
 
-      <div className={styles.metaGrid}>
-        <div className={styles.metaCard}>
-          <div className="flex items-center gap-2 font-semibold text-slate-900">
-            <Clock3 className="h-4 w-4 text-orange-600" />
-            Under 10 seconds
-          </div>
-          <p className="mt-1 text-xs leading-5 text-slate-600">
-            Jump straight into a live product path with fresh sample data.
-          </p>
-        </div>
-        <div className={styles.metaCard}>
-          <div className="flex items-center gap-2 font-semibold text-slate-900">
-            <ShieldCheck className="h-4 w-4 text-orange-600" />
-            Zero setup friction
-          </div>
-          <p className="mt-1 text-xs leading-5 text-slate-600">
-            No registration, no approval wait, no manual seeding.
-          </p>
-        </div>
-        <div className={styles.metaCard}>
-          <div className="flex items-center gap-2 font-semibold text-slate-900">
-            <LogIn className="h-4 w-4 text-orange-600" />
-            4 demo roles
-          </div>
-          <p className="mt-1 text-xs leading-5 text-slate-600">
-            Preview admin, donor, hospital, and blood lab journeys instantly.
-          </p>
-        </div>
-      </div>
+          {showMeta ? (
+            <div className={styles.metaGrid}>
+              <div className={styles.metaCard}>
+                <div className="flex items-center gap-2 font-semibold text-slate-900">
+                  <Clock3 className="h-4 w-4 text-orange-600" />
+                  Under 10 sec
+                </div>
+                <p className="mt-1 text-xs leading-5 text-slate-600">
+                  Jump straight into a live path with sample data.
+                </p>
+              </div>
+              <div className={styles.metaCard}>
+                <div className="flex items-center gap-2 font-semibold text-slate-900">
+                  <ShieldCheck className="h-4 w-4 text-orange-600" />
+                  No setup
+                </div>
+                <p className="mt-1 text-xs leading-5 text-slate-600">
+                  No registration, approval wait, or manual seeding.
+                </p>
+              </div>
+              <div className={styles.metaCard}>
+                <div className="flex items-center gap-2 font-semibold text-slate-900">
+                  <LogIn className="h-4 w-4 text-orange-600" />
+                  4 demo roles
+                </div>
+                <p className="mt-1 text-xs leading-5 text-slate-600">
+                  Preview admin, donor, hospital, and blood lab roles.
+                </p>
+              </div>
+            </div>
+          ) : null}
+        </>
+      ) : null}
 
       {activeAccount && (
         <div className="mt-5 rounded-xl border border-red-200 bg-red-50 px-3 py-3 text-red-900 shadow-sm sm:rounded-2xl sm:px-4 sm:py-4">
@@ -143,7 +154,7 @@ export default function DemoAccessPanel({
                 Setting up the {activeAccount.label} demo workspace...
               </p>
               <p className="mt-1 text-sm leading-6 text-red-700">
-                Refreshing sample data and signing you in. This can take a few seconds while the fresh seed is prepared.
+                Refreshing sample data and signing you in.
               </p>
             </div>
           </div>
@@ -169,7 +180,7 @@ export default function DemoAccessPanel({
                   </div>
                   <div className="mt-1 text-sm leading-6 text-slate-600">
                     {isLoading
-                      ? "Preparing a fresh demo dataset for this role..."
+                      ? "Preparing a fresh demo..."
                       : account.description}
                   </div>
                   <div className="mt-2 break-all text-xs font-medium text-orange-700">

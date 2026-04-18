@@ -381,7 +381,7 @@ export default function DonorRegisterForm() {
         {/* Form Section */}
         <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6">
           <div className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-4 text-sm text-orange-800">
-            Fastest way to explore the product: use the demo access above. Complete this form only if you specifically want to create a donor account.
+            Use the demo first. Fill this out only to create a donor account.
           </div>
 
           {/* Step 1: Personal Information */}
